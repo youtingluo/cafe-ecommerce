@@ -1,0 +1,43 @@
+.kiwi {
+  font-family: 'Kiwi Maru', serif;
+}
+.waterfall {
+  font-family: 'Waterfall', cursive;
+}
+.ubunto {
+  font-family: 'Ubuntu Mono', monospace;
+}
+.offset-n1 {
+  margin-left: -8.33333333%;
+  @media (max-width: 769px) {
+    margin-left: 0;
+  }
+}
+.bg-cover {
+  object-fit: cover;
+}
+.writing-vertical {
+  writing-mode: vertical-lr 
+}
+.z-index-3 {
+  z-index: 3;
+}
+.letter-space {
+  letter-spacing: 1px;
+}
+
+$utilities: (
+  "bg-opacity": (
+      css-var: true,
+      class: bg-opacity,
+      values: (
+        10: .1,
+        25: .25,
+        50: .5,
+        75: .75,
+        90: .9,
+        100: 1
+      )
+    ),
+);
+

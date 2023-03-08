@@ -28,9 +28,9 @@
     <!-- 手機板選單 -->
     <div class="offcanvas offcanvas-end d-md-none w-75 bottom-50" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
           <div class="offcanvas-header justify-content-end">
-            <div data-bs-dismiss="offcanvas" aria-label="Close">
+            <button type="button" class="btn btn-sm" data-bs-dismiss="offcanvas" aria-label="Close">
               <img width="40" src="../../public/image/icon/icon-close.png" alt="close">
-            </div>
+            </button>
           </div>
           <div class="offcanvas-body py-0 pe-4">
             <ul class="navbar-nav mb-lg-0 text-end">
@@ -83,10 +83,21 @@ export default {
 }
 </script>
 <style lang="scss">
-  .nav-link.active {
-    border-bottom: 2px solid #676767;
-  }
-  .navbar {
-    transition: .3s;
-  }
+.nav-link.active {
+  border-bottom: 2px solid #676767;
+}
+.navbar {
+  transition: .3s;
+}
+.nav-item::before {
+  content: '';
+  transition: .3s;
+  width: 0%;
+  background-color: #676767;
+  height: 2px;
+  display:block; 
+}
+.nav-item:hover::before {
+    width: 100%;
+}
 </style>

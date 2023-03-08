@@ -1,7 +1,7 @@
 <template>
   <div class="banner position-relative top-0 end-0 d-flex align-items-center justify-content-start">
     <div class="container">
-      <img class="position-absolute d-none d-lg-block" src="../../public/image/text.png" alt="text">
+      <img class="banner-text position-absolute d-none d-lg-block" src="../../public/image/text.png" alt="text">
       <img class="position-absolute d-block d-lg-none" src="../../public/image/text-mobile.png" alt="text">
     </div>
   </div>
@@ -14,7 +14,7 @@
   </section>
 
   <!-- explore -->
-  <section class="pb-md-9 py-4 py-md-0">
+  <section class="pb-md-9 pt-md-7 py-4 py-md-0">
     <div class="container">
       <div class="row align-items-center g-0">
         <div class="col-md-6 mb-3 mb-md-0">
@@ -32,7 +32,7 @@
         <div class="col-md-6 order-md-1">
           <div class="text-center">
             <p class="h6 text-center mb-3 kiwi">尋找屬於你的味道</p>
-            <button class="btn btn-light fw-bold text-primary border w-100 rounded-1" type="button">探索商品</button>
+            <button class="btn btn-light fw-bold text-primary border explore-button rounded-1" type="button">探索商品</button>
           </div>
         </div>
       </div>
@@ -187,12 +187,24 @@
     background-attachment: initial;
   }
 }
+.banner-text {
+  transform: translateY(-20%);
+}
+.explore-button {
+  width: 50%;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
 .bar { 
   border: 2px solid #C9C9C9;
   width: 60px;
   height: 0px;
   margin-top: 40px;
   transform: rotate(90deg);
+  @media (max-width: 768px) {
+    width: 40px;
+  }
 }
 
 .promise {

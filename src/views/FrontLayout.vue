@@ -2,23 +2,36 @@
   <div>
     <nav ref="navbar" class="navbar navbar-expand-md fixed-top py-3">
       <div class="container">
-        <RouterLink class="navbar-brand" to="/">Cafe Beat</RouterLink>
-        <a class="d-md-none" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><img class="img-fluid" width="40" src="../../public/image/icon/icon-menu.png" alt=""></a>        
+        <RouterLink class="navbar-brand waterfall fs-3 text-dark" to="/">Cafe Beat</RouterLink>
+        <a class="d-md-none" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+          <span class="badge rounded-pill bg-dark me-3">
+            <i class="bi bi-cart-fill text-white position-relative">
+              <span class="position-absolute top-0 start-100 translate-middle-y bg-danger
+              fw-normal font-monospace rounded-circle px-2 py-1">0</span>
+            </i>
+          </span>
+          <img class="img-fluid" width="40" src="@/image/icon/icon-menu.png" alt="">
+        </a>
         <!-- PC 板選單 -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav ms-lg-auto mb-lg-0">
+          <ul class="navbar-nav ms-auto mb-lg-0">
             <li class="nav-item ms-4">
               <RouterLink class="nav-link" to="/">首頁</RouterLink>
             </li>
             <li class="nav-item ms-4">
-              <RouterLink class="nav-link" to="/about">產品列表</RouterLink>
+              <RouterLink class="nav-link" to="/products">產品列表</RouterLink>
             </li>
             <li class="nav-item ms-4">
               <RouterLink class="nav-link" to="/about">關於我們</RouterLink>
             </li>
             <li class="nav-item ms-4">
               <RouterLink class="nav-link" to="/about">
-                <img width="24" src="../../public/image/icon/icon-cart.png" alt="cart">
+                <span class="badge rounded-pill bg-dark fs-6">
+                  <i class="bi bi-cart-fill text-white position-relative">
+                    <span class="position-absolute top-0 start-100 translate-middle-y bg-danger
+                    fw-normal font-monospace rounded-circle px-2 py-1">0</span>
+                  </i>
+                </span>
               </RouterLink>
             </li>
           </ul>
@@ -27,30 +40,25 @@
     </nav>
     <!-- 手機板選單 -->
     <div class="offcanvas offcanvas-end d-md-none w-75 bottom-50" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-          <div class="offcanvas-header justify-content-end">
-            <button type="button" class="btn btn-sm" data-bs-dismiss="offcanvas" aria-label="Close">
-              <img width="40" src="../../public/image/icon/icon-close.png" alt="close">
-            </button>
-          </div>
-          <div class="offcanvas-body py-0 pe-4">
-            <ul class="navbar-nav mb-lg-0 text-end">
-              <li class="nav-item ms-md-5 fs-5">
-                <RouterLink class="nav-link d-inline-block" to="/">首頁</RouterLink>
-              </li>
-              <li class="nav-item ms-md-5 fs-5">
-                <RouterLink class="nav-link d-inline-block" to="/about">產品列表</RouterLink>
-              </li>
-              <li class="nav-item ms-md-5 fs-5">
-                <RouterLink class="nav-link d-inline-block" to="/about">關於我們</RouterLink>
-              </li>
-              <li class="nav-item ms-md-5 fs-5">
-                <RouterLink class="nav-link d-inline-block" to="/about">
-                  <img width="24" src="../../public/image/icon/icon-cart.png" alt="cart">
-                </RouterLink>
-              </li>
-          </ul>
-          </div>
-        </div>
+      <div class="offcanvas-header justify-content-end">
+        <button type="button" class="btn btn-sm" data-bs-dismiss="offcanvas" aria-label="Close">
+          <img width="40" src="@/image/icon/icon-close.png" alt="close">
+        </button>
+      </div>
+      <div class="offcanvas-body py-0 pe-4">
+        <ul class="navbar-nav mb-lg-0 text-end">
+          <li class="nav-item ms-md-5 fs-5">
+            <RouterLink class="nav-link d-inline-block" to="/">首頁</RouterLink>
+          </li>
+          <li class="nav-item ms-md-5 fs-5">
+            <RouterLink class="nav-link d-inline-block" to="/products">產品列表</RouterLink>
+          </li>
+          <li class="nav-item ms-md-5 fs-5">
+            <RouterLink class="nav-link d-inline-block" to="/about">關於我們</RouterLink>
+          </li>
+      </ul>
+      </div>
+    </div>
     <div>
       <RouterView />
     </div>
@@ -74,15 +82,15 @@ export default {
     onScroll() {
       this.windowTop = window.scrollY /* or: e.target.documentElement.scrollTop */
       if(this.windowTop > 100) {
-        this.$refs.navbar.classList.add('bg-dark', 'shadow', 'navbar-dark')
+        this.$refs.navbar.classList.add('bg-light', 'shadow', 'navbar-light')
       } else {
-        this.$refs.navbar.classList.remove('bg-dark', 'shadow', 'navbar-dark')
+        this.$refs.navbar.classList.remove('bg-light', 'shadow', 'navbar-light')
       }
     }
   }
 }
 </script>
-<style lang="scss">
+<style lang="scss" scoped>
 .nav-link.active {
   border-bottom: 2px solid #676767;
 }

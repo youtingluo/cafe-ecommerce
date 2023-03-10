@@ -2,4 +2,8 @@
 @import 'bootstrap/scss/functions';
 @import './variables';
 @import './utilities';
-@import 'bootstrap'
+@import './mixin';
+@import 'bootstrap';
+
+// pages
+@import './pages/products';

@@ -1,0 +1,8 @@
+.imgset{
+  width: 100vw;
+  height: 40vh;
+  object-fit: cover;
+  @include pad {
+    height: 30vh;
+  }
+}

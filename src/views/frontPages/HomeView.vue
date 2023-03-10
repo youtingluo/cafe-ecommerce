@@ -1,8 +1,8 @@
 <template>
   <div class="banner position-relative top-0 end-0 d-flex align-items-center justify-content-start">
     <div class="container">
-      <img class="banner-text position-absolute d-none d-lg-block" src="../../public/image/text.png" alt="text">
-      <img class="position-absolute d-block d-lg-none" src="../../public/image/text-mobile.png" alt="text">
+      <img class="banner-text position-absolute d-none d-lg-block" src="@/image/text.png" alt="text">
+      <img class="position-absolute d-block d-lg-none" src="@/image/text-mobile.png" alt="text">
     </div>
   </div>
   
@@ -18,7 +18,7 @@
     <div class="container">
       <div class="row align-items-center g-0">
         <div class="col-md-6 mb-3 mb-md-0">
-          <img class="img-fluid bg-cover" src="../../public/image/explore1.png" alt="explore1">
+          <img class="img-fluid bg-cover" src="@/image/explore1.png" alt="explore1">
         </div>
         <div class="col-md-6 mb-3 mb-md-0">
           <p class="h5 text-center mb-3 kiwi">繁忙工作中 治癒疲憊身心的飲品</p>
@@ -27,7 +27,7 @@
       </div>
       <div class="row align-items-center g-0">
         <div class="col-md-6 order-md-2 mb-3 mb-md-0">
-          <img class="img-fluid bg-cover order-md-1" src="../../public/image/explore2.png" alt="explore1">
+          <img class="img-fluid bg-cover order-md-1" src="@/image/explore2.png" alt="explore1">
         </div>
         <div class="col-md-6 order-md-1">
           <div class="text-center">
@@ -49,7 +49,7 @@
           <div class="bg-white bg-opacity-90 writing-vertical px-2 py-4  kiwi  letter-space position-absolute top-0 ms-3">
             <span class="h3">淺焙</span>最原始的風味
           </div>
-          <img class="img-fluid" src="../../public/image/knowledge1.png" alt="knowledge1">
+          <img class="img-fluid" src="@/image/knowledge1.png" alt="knowledge1">
         </div>
         <div class="col-lg-4 offset-n1 z-index-3">
           <div class="py-7 px-5 bg-secondary mb-3 bg-opacity-90 letter-space">
@@ -65,7 +65,7 @@
           <div class="bg-white bg-opacity-90 writing-vertical px-2 py-4  kiwi  letter-space position-absolute top-0 ms-3">
             <span class="h3">中焙</span>醇厚與酸味的平衡
           </div>
-          <img class="img-fluid" src="../../public/image/knowledge2.png" alt="knowledge2">
+          <img class="img-fluid" src="@/image/knowledge2.png" alt="knowledge2">
         </div>
         <div class="col-lg-4 offset-n1 z-index-3">
           <div class="py-7 px-5 bg-secondary mb-3 bg-opacity-90 letter-space">
@@ -81,7 +81,7 @@
           <div class="bg-white bg-opacity-90 writing-vertical px-2 py-4  kiwi  letter-space position-absolute top-0 ms-3">
             <span class="h3">深焙</span>醇厚且濃烈的口感
           </div>
-          <img class="img-fluid" src="../../public/image/knowledge3.png" alt="knowledge3">
+          <img class="img-fluid" src="@/image/knowledge3.png" alt="knowledge3">
         </div>
         <div class="col-lg-4 offset-n1 z-index-3">
           <div class="py-7 px-5 bg-secondary mb-3 bg-opacity-90 letter-space">
@@ -100,18 +100,18 @@
       <h2 class="h5 text-center kiwi mb-6">堅持</h2>
       <div class="row justify-content-center">
         <div class="col-md-4 d-flex justify-content-center align-items-center position-relative">
-          <img class="filter img-fluid" src="../../public/image/promise1.png" alt="promise1">
+          <img class="filter img-fluid" src="@/image/promise1.png" alt="promise1">
           <div class="position-absolute">
             <div class="text-white fs-5">新鮮原豆</div>
           </div>
         </div>
         <div class="col-md-4 d-flex justify-content-center align-items-center position-relative">
-          <img class="filter img-fluid" src="../../public/image/promise2.png" alt="promise2">
+          <img class="filter img-fluid" src="@/image/promise2.png" alt="promise2">
           <div class="position-absolute">
             <div class="text-white fs-5">當日配送</div>
           </div>
         </div><div class="col-md-4 d-flex justify-content-center align-items-center position-relative">
-          <img class="filter img-fluid" src="../../public/image/promise3.png" alt="promise3">
+          <img class="filter img-fluid" src="@/image/promise3.png" alt="promise3">
           <div class="position-absolute">
             <div class="text-white fs-5">完整包裝</div>
           </div>
@@ -130,17 +130,17 @@
           <div class="writing-vertical text-white px-2 py-4 align-middle kiwi letter-space position-absolute top-0 ms-3">
             <span class="h3">聞香而來</span><span class="align-text-bottom">—</span> 咖啡豆系列
           </div>
-          <img class="img-fluid" src="../../public/image/shopping1.png" alt="shopping1">
+          <img class="img-fluid" src="@/image/shopping1.png" alt="shopping1">
         </div>
         <div class="col-md-4 position-relative mb-md-0 mb-3"><div class="writing-vertical text-white px-2 py-4 align-middle kiwi letter-space position-absolute top-0 ms-3">
             <span class="h3">視覺饗宴</span><span class="align-text-bottom">—</span> 咖啡杯系列
           </div>
-          <img class="img-fluid" src="../../public/image/shopping2.png" alt="shopping2">
+          <img class="img-fluid" src="@/image/shopping2.png" alt="shopping2">
         </div>
         <div class="col-md-4 position-relative mb-md-0 mb-3"><div class="writing-vertical text-white px-2 py-4 align-middle kiwi letter-space position-absolute top-0 ms-3">
             <span class="h3">大師養成</span><span class="align-text-bottom">—</span> 咖啡用具系列
           </div>
-          <img class="img-fluid" src="../../public/image/shopping3.png" alt="shopping3">
+          <img class="img-fluid" src="@/image/shopping3.png" alt="shopping3">
         </div>
       </div>
     </div>
@@ -176,7 +176,7 @@
 
 <style lang="scss">
 .banner {
-  background-image: url(../../public/image/banner.png);
+  background-image: url(@/image/banner.png);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;

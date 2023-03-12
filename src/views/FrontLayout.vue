@@ -3,15 +3,19 @@
     <nav ref="navbar" class="navbar navbar-expand-md fixed-top py-3">
       <div class="container">
         <RouterLink class="navbar-brand waterfall fs-3 text-dark" to="/">Cafe Beat</RouterLink>
-        <a class="d-md-none" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
-          <span class="badge rounded-pill bg-dark me-3">
+        <div>
+        <RouterLink to="/cart">
+          <button type="button" class="btn btn-dark badge rounded-pill me-3">
             <i class="bi bi-cart-fill text-white position-relative">
               <span class="position-absolute top-0 start-100 translate-middle-y bg-danger
-              fw-normal font-monospace rounded-circle px-2 py-1">0</span>
+              fw-normal rounded-circle px-2 py-1 font-normal">0</span>
             </i>
-          </span>
-          <img class="img-fluid" width="40" src="@/image/icon/icon-menu.png" alt="">
+          </button>
+        </RouterLink>
+        <a class="d-md-none" href="#" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+          <img class="img-fluid" width="40" src="@/image/icon/icon-menu.png" alt="menu">
         </a>
+      </div>
         <!-- PC 板選單 -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav ms-auto mb-lg-0">
@@ -22,16 +26,16 @@
               <RouterLink class="nav-link" to="/products">產品列表</RouterLink>
             </li>
             <li class="nav-item ms-4">
-              <RouterLink class="nav-link" to="/about">關於我們</RouterLink>
+              <RouterLink class="nav-link" to="/collect">我的收藏</RouterLink>
             </li>
-            <li class="nav-item ms-4">
-              <RouterLink class="nav-link" to="/about">
-                <span class="badge rounded-pill bg-dark fs-6">
+            <li class="ms-4">
+              <RouterLink class="nav-link" to="/cart">
+                <button class="btn btn-dark badge rounded-pill fs-6">
                   <i class="bi bi-cart-fill text-white position-relative">
                     <span class="position-absolute top-0 start-100 translate-middle-y bg-danger
-                    fw-normal font-monospace rounded-circle px-2 py-1">0</span>
+                    fw-normal rounded-circle px-2 py-1 font-normal">0</span>
                   </i>
-                </span>
+                </button>
               </RouterLink>
             </li>
           </ul>
@@ -39,7 +43,7 @@
       </div>
     </nav>
     <!-- 手機板選單 -->
-    <div class="offcanvas offcanvas-end d-md-none w-75 bottom-50" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas offcanvas-end d-md-none w-50 bottom-50" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
       <div class="offcanvas-header justify-content-end">
         <button type="button" class="btn btn-sm" data-bs-dismiss="offcanvas" aria-label="Close">
           <img width="40" src="@/image/icon/icon-close.png" alt="close">
@@ -54,9 +58,9 @@
             <RouterLink class="nav-link d-inline-block" to="/products">產品列表</RouterLink>
           </li>
           <li class="nav-item ms-md-5 fs-5">
-            <RouterLink class="nav-link d-inline-block" to="/about">關於我們</RouterLink>
+            <RouterLink class="nav-link d-inline-block" to="/collect">我的收藏</RouterLink>
           </li>
-      </ul>
+        </ul>
       </div>
     </div>
     <div>
@@ -91,21 +95,19 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-.nav-link.active {
-  border-bottom: 2px solid #676767;
-}
 .navbar {
   transition: .3s;
 }
-.nav-item::before {
+.nav-item::after {
   content: '';
+  display: inline-block;
   transition: .3s;
-  width: 0%;
+  transform: scaleX(0);
   background-color: #676767;
   height: 2px;
   display:block; 
 }
-.nav-item:hover::before {
-    width: 100%;
+.nav-item:hover::after {
+  transform: scaleX(1);
 }
 </style>

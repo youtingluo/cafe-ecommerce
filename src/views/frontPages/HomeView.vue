@@ -181,19 +181,13 @@
   background-position: center;
   background-attachment: fixed;
   height: 868px;
-  max-height: 90vh;
+  max-height: calc(100vh - 213px);
   @media (max-width: 769px) {
     max-height: 342px;
     background-attachment: initial;
   }
-}
-.banner-text {
-  transform: translateY(-20%);
-}
-.explore-button {
-  width: 50%;
-  @media (max-width: 767px) {
-    width: 100%;
+  .banner-text {
+    transform: translateY(-20%);
   }
 }
 .bar { 
@@ -206,7 +200,12 @@
     width: 40px;
   }
 }
-
+.explore-button {
+  width: 50%;
+  @media (max-width: 767px) {
+    width: 100%;
+  }
+}
 .promise {
   background-color: rgba(252, 248, 243, 0.9);
   @media (max-width: 769px) {

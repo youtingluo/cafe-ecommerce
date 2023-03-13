@@ -8,12 +8,24 @@
       </p>
     </div>
     <div class="container mt-3">
-      <select class="form-select mb-3">
-        <option selected>篩選類別</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
-      </select>
+      <div class="row">
+        <div class="col-md-6 col-lg-4">
+          <select class="form-select mb-3 d-md-inline-block">
+            <option selected>篩選類別</option>
+            <option value="1">One</option>
+            <option value="2">Two</option>
+            <option value="3">Three</option>
+          </select>
+        </div>
+        <div class="col-md-6 col-lg-4 ms-auto">
+          <div class="input-group mb-3">
+            <input type="text" class="form-control border-bottom border-0 rounded-0" placeholder="搜尋產品" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-dark border-0" type="button" id="button-addon2">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="row">
         <div class="col-lg-4 col-md-6 mb-2">
           <a href="#">
@@ -56,7 +68,7 @@
         </div>
       </div>
 
-      <nav>
+      <nav class="mt-3">
         <ul class="pagination justify-content-center">
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Previous">

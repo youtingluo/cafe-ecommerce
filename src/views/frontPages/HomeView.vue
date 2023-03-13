@@ -40,7 +40,7 @@
   </section>
   
   <!-- 知識 -->
-  <section class="py-lg-9 py-4">
+  <section class="pb-lg-9 py-4">
     <div class="container">
       <h2 class="fs-7 text-center waterfall">Knowledge</h2>
       <h2 class="h5 text-center kiwi mb-6">知識</h2>

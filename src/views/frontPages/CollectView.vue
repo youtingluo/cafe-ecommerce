@@ -8,7 +8,7 @@
       </p>
     </div>
 
-    <div class="container mt-3">
+    <div class="container my-3">
       <div class="row">
         <div class="col-lg-4 col-md-6">
           <a href="#">

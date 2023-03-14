@@ -16,6 +16,9 @@
     margin-left: 0;
   }
 }
+.min-body-heigh {
+  min-height: calc( 100vh - 368px );
+}
 .bg-cover {
   object-fit: cover;
 }

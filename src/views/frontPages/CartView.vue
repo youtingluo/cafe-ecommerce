@@ -6,15 +6,17 @@
       購物車
     </p>
   </div>
-  <!-- <div class="container text-center mt-3 mt-md-5">
-    <div class="d-flex flex-column align-items-center">
+  <div class="container text-center min-body-heigh d-flex flex-column align-items-center justify-content-center">
+    <div class="mb-5">
       <h3>您的購物車還是空的</h3>
-      <i class="bi bi-basket mb-3" style="font-size: 3rem"></i>
+      <i class="bi bi-basket" style="font-size: 3rem"></i>
+    </div>
+    <div>
       <router-link class="btn btn-primary d-inline-block" to="/products">馬上去選購</router-link>
     </div>
-  </div> -->
+  </div>
 
-  <div class="container mt-3 mt-md-5">
+  <div class="d-none container my-3 my-md-5 min-body-heigh">
     <div class="row">
       <div class="col-md-8">
         <h1 class="bg-secondary p-3 text-center">購物車清單</h1>

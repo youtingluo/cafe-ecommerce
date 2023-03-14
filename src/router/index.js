@@ -31,10 +31,31 @@ const router = createRouter({
         {
           path: '/products/:id',
           component: () => import('../views/frontPages/ProductView.vue')
+        },
+        {
+          path: '/login',
+          component: () => import('../views/frontPages/LoginView.vue')
         }
       ]
     },
-    
+    {
+      path: '/admin',
+      component: () => import('../views/BackLayout.vue'),
+      children: [
+        {
+          path: 'products',
+          component: () => import('../views/backPages/AdminProductsView.vue')
+        },
+        {
+          path: 'coupons',
+          component: () => import('../views/backPages/AdminCouponView.vue')
+        },
+        {
+          path: 'orders',
+          component: () => import('../views/backPages/AdminOrderView.vue')
+        }
+      ]
+    }
   ]
 })
 

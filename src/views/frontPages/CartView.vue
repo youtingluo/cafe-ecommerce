@@ -1,4 +1,5 @@
 <template>
+  <loading :active="isLoading" :loader="'dots'" :color="'#FCF8F3'" :background-color="'#676767'" />
   <div class="position-relative">
     <img class="imgset" src="https://images.unsplash.com/photo-1598908314732-07113901949e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80">
     <p class="position-absolute top-50 start-50 p-2
@@ -6,8 +7,8 @@
       購物車
     </p>
   </div>
-  <div class="container text-center min-body-heigh d-flex flex-column align-items-center justify-content-center">
-    <div class="mb-5">
+  <div class="container my-3 min-body-heigh d-flex flex-column align-items-center justify-content-center">
+    <div class="mb-5 text-center">
       <h3>您的購物車還是空的</h3>
       <i class="bi bi-basket" style="font-size: 3rem"></i>
     </div>
@@ -59,6 +60,44 @@
     </div>
   </div>
 </template>
+
+<script>
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/css/index.css'
+const { VITE_URL, VITE_PATH } = import.meta.env
+export default {
+  data() {
+    return {
+      isLoading: false,
+      carts: [],
+      final_total: 0,
+      total: 0
+    }
+  },
+  components: {
+    Loading,
+  },
+  methods: {
+    getCarts() {
+      this.isLoading = true
+      this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/cart`)
+        .then(res => {
+          console.log(res.data);
+          this.carts = res.data.carts
+          this.final_total = res.data.final_total
+          this.total = res.data.total
+          this.isLoading = false
+        })
+        .catch(err => {
+          console.log(err.response.data.message);
+        })
+    }
+  },
+  mounted() {
+    this.getCarts()
+  },
+}
+</script>
 
 <style lang="scss">
   .cart-img {

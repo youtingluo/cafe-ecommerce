@@ -13,27 +13,27 @@ const router = createRouter({
           component: () => import('../views/frontPages/HomeView.vue')
         },
         {
-          path: '/products',
+          path: 'products',
           component: () => import('../views/frontPages/ProductsView.vue')
         },
         {
-          path: '/collect',
+          path: 'collect',
           component: () => import('../views/frontPages/CollectView.vue')
         },
         {
-          path: '/cart',
+          path: 'cart',
           component: () => import('../views/frontPages/CartView.vue')
         },
         {
-          path: '/pay',
+          path: 'pay',
           component: () => import('../views/frontPages/PayView.vue')
         },
         {
-          path: '/products/:id',
+          path: 'products/:id',
           component: () => import('../views/frontPages/ProductView.vue')
         },
         {
-          path: '/login',
+          path: 'login',
           component: () => import('../views/frontPages/LoginView.vue')
         }
       ]
@@ -56,7 +56,10 @@ const router = createRouter({
         }
       ]
     }
-  ]
+  ],
+  scrollBehavior () {
+    return { top: 0 }
+  }
 })
 
 export default router

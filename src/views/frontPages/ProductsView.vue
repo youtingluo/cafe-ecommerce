@@ -1,5 +1,6 @@
 <template>
   <div>
+    <loading :active="isLoading" :loader="'dots'" :color="'#FCF8F3'" :background-color="'#676767'" />
     <div class="position-relative">
       <img class="top-50 imgset" src="https://images.unsplash.com/photo-1598908314732-07113901949e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80">
       <p class="position-absolute top-50 start-50 p-2
@@ -27,95 +28,103 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-4 col-md-6 mb-2">
-          <a href="#">
+        <div v-for="product in products" :key="product.id" class="col-lg-4 col-md-6 mb-3">
+          <router-link :to="`products/${product.id}`">
             <div class="card product-card">
               <div class="card-head">
-                <img class="card-img-top bg-cover" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="產品">
+                <img class="card-img-top bg-cover" height="300" :src="product.imageUrl" alt="產品" :title="product.title">
               </div>
               <div class="card-body">
-                <h5 class="card-title">冰咖啡</h5>
-                <p class="card-text">濃醇香濃濃醇香濃醇香</p>
+                <h5 class="card-title">{{ product.title }}</h5>
+                <p class="card-text">NT$ {{ product.price }} / 
+                  <small class="text-muted text-decoration-line-through">NT$ {{ product.origin_price }}</small>
+                </p>
                 <div class="d-flex justify-content-between">
-                  <button type="button" href="#" class="btn btn-primary me-auto">加入購物車</button>
-                  <button type="button" href="#" class="btn btn-outline-primary">
+                  <button type="button" class="btn btn-primary me-auto" @click.prevent="$event => addToCart(product.id)">
+                    加入購物車
+                  </button>
+                  <button type="button" class="btn btn-outline-danger">
                     <i class="bi bi-heart"></i>
                     加入收藏</button>
                 </div>
               </div>
             </div>
-          </a>
-        </div>
-
-        <div class="col-lg-4 col-md-6 mb-2">
-          <a href="#">
-            <div class="card product-card">
-              <div class="card-head">
-                <img class="card-img-top" src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" alt="產品">
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">冰咖啡</h5>
-                <p class="card-text">濃醇香</p>
-                <div class="d-flex justify-content-between">
-                  <button type="button" href="#" class="btn btn-primary me-auto">加入購物車</button>
-                  <button type="button" href="#" class="btn btn-outline-primary">
-                    <i class="bi bi-heart"></i>
-                    加入收藏</button>
-                </div>
-              </div>
-            </div>
-          </a>
+          </router-link>
         </div>
       </div>
-
-      <nav class="mt-3">
-        <ul class="pagination justify-content-center">
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Previous">
-              <span aria-hidden="true">&laquo;</span>
-            </a>
-          </li>
-          <li class="page-item active"><a class="page-link" href="#">1</a></li>
-          <li class="page-item"><a class="page-link" href="#">2</a></li>
-          <li class="page-item"><a class="page-link" href="#">3</a></li>
-          <li class="page-item">
-            <a class="page-link" href="#" aria-label="Next">
-              <span aria-hidden="true">&raquo;</span>
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <div class="d-flex justify-content-center">
+        <Pagination :pagination="pagination" @emit-page="getProducts" />
+      </div>
     </div>
   </div>
 </template>
+
+<script>
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/css/index.css'
+import Pagination from '../../components/PaginationComponent.vue'
+const { VITE_URL, VITE_PATH } = import.meta.env
+export default {
+  data() {
+    return {
+      isLoading: false,
+      products: [],
+      pagination: {}
+    }
+  },
+  components: {
+    Pagination,
+    Loading
+  },
+  methods: {
+    getProducts(page = 1) {
+      this.isLoading = true
+      this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/products?page=${page}`)
+        .then(res => {
+          this.products = res.data.products
+          this.pagination = res.data.pagination
+          this.isLoading = false
+        })
+        .catch(err => {
+          console.log(err.response.data.message);
+        })
+    },
+    addToCart(id) {
+      const data = {
+        "product_id": id,
+        "qty": 1
+      }
+      this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/cart`, { data })
+        .then(() => {
+          console.log('加入單項成功');
+          this.isLoading = false
+        })
+        .catch(err => {
+          console.log(err.response.data.message);
+        })
+    }
+  },
+  mounted() {
+    this.getProducts()
+  },
+
+}
+</script>
 
 <style lang="scss">
 .card-head {
   overflow: hidden;
 }
-.like-button {
-  margin-top: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  border: 2px solid #fff;
-  color: white;
-  z-index: 5;
+.product-card {
+  overflow: hidden;
+  img {
+    transition: .3s;
+  }
+  &:hover img {
+    transform: scale(1.2);
+  }
   &:hover {
-    border: 2px solid red;
-    color: red;
+    box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2);
   }
 }
-  .product-card {
-    overflow: hidden;
-    img {
-      transition: .3s;
-    }
-    &:hover img {
-      transform: scale(1.2);
-    }
-  }
 </style>

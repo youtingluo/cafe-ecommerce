@@ -32,7 +32,9 @@
         <div class="col-md-6 order-md-1">
           <div class="text-center">
             <p class="h6 text-center mb-3 kiwi">尋找屬於你的味道</p>
-            <button class="btn btn-light fw-bold text-primary border explore-button rounded-1" type="button">探索商品</button>
+            <router-link to="/products" class="btn btn-light fw-bold text-primary border explore-button rounded-1" type="button">
+              探索商品
+            </router-link>
           </div>
         </div>
       </div>

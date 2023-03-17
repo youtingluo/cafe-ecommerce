@@ -33,6 +33,10 @@ const router = createRouter({
           component: () => import('../views/frontPages/PayView.vue')
         },
         {
+          path: 'order/:id',
+          component: () => import('../views/frontPages/ConfirmPay.vue')
+        },
+        {
           path: 'products/:id',
           component: () => import('../views/frontPages/ProductView.vue')
         },

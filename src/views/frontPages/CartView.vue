@@ -56,14 +56,14 @@
         <div class="text-dark border border-dark p-3">
           <h2 class="text-center border-bottom border-2 pb-3 mb-3">訂單明細</h2>
           <div class="d-flex justify-content-between align-items-start mb-2">
-              <p class="fs-5">小計：</p>
-              <div class="d-flex flex-column">
-                <p class="text-end border-bottom pb-3" v-for="cart in carts" :key="cart.id">{{ cart.product.title }} x {{ cart.qty }}</p>
-              </div>
+            <p class="fs-5">小計：</p>
+            <div class="d-flex flex-column">
+              <p class="text-end border-bottom pb-3" v-for="cart in carts" :key="cart.id">{{ cart.product.title }} x {{ cart.qty }}</p>
+            </div>
           </div>
           <div class="d-flex justify-content-between align-items-end mb-2">
-              <p class="fs-3">總計：</p>
-              <p class="fw-bold text-danger">NT$ {{ final_total }}</p>
+            <p class="fs-3">總計：</p>
+            <p class="fw-bold text-danger">NT$ {{ final_total }}</p>
           </div>
         </div>
         <router-link :to="`cart/${carts[0].id}`" type="button" class="btn btn-dark btn-lg rounded-0 w-100"

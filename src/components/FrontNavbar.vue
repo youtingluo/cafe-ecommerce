@@ -7,7 +7,7 @@
         <button type="button" class="btn btn-dark badge rounded-pill me-3">
           <i class="bi bi-cart-fill text-white position-relative">
             <span class="position-absolute top-0 start-100 translate-middle-y bg-danger
-            fw-normal rounded-circle px-2 py-1 font-normal">0</span>
+            fw-normal rounded-circle px-2 py-1 font-normal">{{ carts.length }}</span>
           </i>
         </button>
       </RouterLink>

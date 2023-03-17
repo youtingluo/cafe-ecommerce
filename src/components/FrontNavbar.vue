@@ -71,17 +71,19 @@
 </template>
 
 <script>
-import { mapState } from 'pinia'
+import { mapActions, mapState } from 'pinia'
 import { cartStore } from '../stores/cart'
 
 export default {
   mounted() {
+    this.getCarts()
     window.addEventListener("scroll", this.onScroll)
   },
   beforeUnmount() {
     window.removeEventListener("scroll", this.onScroll)
   },
   methods: {
+    ...mapActions(cartStore, ['getCarts']),
     onScroll() {
       this.windowTop = window.scrollY /* or: e.target.documentElement.scrollTop */
       if(this.windowTop > 100) {

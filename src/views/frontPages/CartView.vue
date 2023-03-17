@@ -66,7 +66,9 @@
               <p class="fw-bold text-danger">NT$ {{ final_total }}</p>
           </div>
         </div>
-        <button type="button" class="btn btn-dark btn-lg rounded-0 w-100">結帳</button>
+        <router-link :to="`cart/${carts[0].id}`" type="button" class="btn btn-dark btn-lg rounded-0 w-100"
+          >結帳
+        </router-link>
       </div>
     </div>
   </div>
@@ -82,7 +84,7 @@ export default {
     Loading,
   },
   methods: {
-    ...mapActions(cartStore, ['updateCart', 'getCarts', 'removeCart', 'removeAllCart'])
+    ...mapActions(cartStore, ['updateCart', 'getCarts', 'removeCart', 'removeAllCart']),
   },
   computed: {
     ...mapState(cartStore, ['carts', 'isLoading', 'final_total', 'state'])

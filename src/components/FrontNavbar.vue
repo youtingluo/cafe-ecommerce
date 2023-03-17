@@ -25,6 +25,9 @@
             <RouterLink class="nav-link" to="/products">產品列表</RouterLink>
           </li>
           <li class="nav-item ms-4">
+            <RouterLink class="nav-link" to="/about">關於我們</RouterLink>
+          </li>
+          <li class="nav-item ms-4">
             <RouterLink class="nav-link" to="/collect">我的收藏</RouterLink>
           </li>
           <li class="ms-4">
@@ -32,7 +35,7 @@
               <button class="btn btn-dark badge rounded-pill fs-6">
                 <i class="bi bi-cart-fill text-white position-relative">
                   <span class="position-absolute top-0 start-100 translate-middle-y bg-danger
-                  fw-normal rounded-circle px-2 py-1 font-normal">0</span>
+                  fw-normal rounded-circle px-2 py-1 font-normal">{{ carts.length }}</span>
                 </i>
               </button>
             </RouterLink>
@@ -57,6 +60,9 @@
           <RouterLink class="nav-link d-inline-block" to="/products">產品列表</RouterLink>
         </li>
         <li class="nav-item ms-md-5 fs-5" data-bs-dismiss="offcanvas">
+          <RouterLink class="nav-link d-inline-block" to="/about">關於我們</RouterLink>
+        </li>
+        <li class="nav-item ms-md-5 fs-5" data-bs-dismiss="offcanvas">
           <RouterLink class="nav-link d-inline-block" to="/collect">我的收藏</RouterLink>
         </li>
       </ul>
@@ -65,6 +71,9 @@
 </template>
 
 <script>
+import { mapState } from 'pinia'
+import { cartStore } from '../stores/cart'
+
 export default {
   mounted() {
     window.addEventListener("scroll", this.onScroll)
@@ -81,6 +90,9 @@ export default {
         this.$refs.navbar.classList.remove('bg-light', 'shadow', 'navbar-light')
       }
     }
+  },
+  computed: {
+    ...mapState(cartStore, ['carts'])
   }
 }
 </script>

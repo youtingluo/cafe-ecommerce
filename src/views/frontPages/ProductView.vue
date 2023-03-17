@@ -38,7 +38,9 @@
               </p>
               <div class="row">
                 <div class="col-md-6">
-                  <button type="button" class="btn btn-primary w-100 mt-2" @click="$event => addToCart(product.id)">
+                  <button type="button" class="btn btn-primary w-100 mt-2" :disabled="state === product.id"
+                  @click="() => addToCart(product.id, qty)">
+                    <span v-if="state === product.id" class="spinner-grow text-secondary spinner-grow-sm"></span>
                     加入購物車
                   </button>
                 </div>
@@ -129,8 +131,10 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'pinia'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
+import { cartStore } from '../../stores/cart'
 const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
   data() {
@@ -154,6 +158,7 @@ export default {
     },
   },
   methods: {
+    ...mapActions(cartStore, ['addToCart', 'getCart']),
     getProduct() {
       this.isLoading = true
       const { id } = this.$route.params
@@ -166,20 +171,9 @@ export default {
           console.log(err.response.data.message);
         })
     },
-    addToCart(id) {
-      const data = {
-        product_id: id,
-        qty: this.qty
-      }
-      this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/cart`, { data })
-        .then(() => {
-          console.log('加入購物車成功');
-          this.isLoading = false
-        })
-        .catch(err => {
-          console.log(err.response.data.message);
-        })
-    }
+  },
+  computed: {
+    ...mapState(cartStore, ['state'])
   },
   mounted() {
     this.getProduct()

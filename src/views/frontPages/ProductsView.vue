@@ -40,7 +40,9 @@
                   <small class="text-muted text-decoration-line-through">NT$ {{ product.origin_price }}</small>
                 </p>
                 <div class="d-flex justify-content-between">
-                  <button type="button" class="btn btn-primary me-auto" @click.prevent="$event => addToCart(product.id)">
+                  <button type="button" class="btn btn-primary me-auto" :disabled="state === product.id"
+                  @click.prevent="() => addToCart(product.id)">
+                    <span v-if="state === product.id" class="spinner-grow text-secondary spinner-grow-sm"></span>
                     加入購物車
                   </button>
                   <button type="button" class="btn btn-outline-danger">
@@ -60,9 +62,11 @@
 </template>
 
 <script>
+import { mapActions, mapState } from 'pinia'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 import Pagination from '../../components/PaginationComponent.vue'
+import { cartStore } from '../../stores/cart'
 const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
   data() {
@@ -77,6 +81,7 @@ export default {
     Loading
   },
   methods: {
+    ...mapActions(cartStore, ['addToCart', 'getCarts']),
     getProducts(page = 1) {
       this.isLoading = true
       this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/products?page=${page}`)
@@ -89,20 +94,9 @@ export default {
           console.log(err.response.data.message);
         })
     },
-    addToCart(id) {
-      const data = {
-        "product_id": id,
-        "qty": 1
-      }
-      this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/cart`, { data })
-        .then(() => {
-          console.log('加入單項成功');
-          this.isLoading = false
-        })
-        .catch(err => {
-          console.log(err.response.data.message);
-        })
-    }
+  },
+  computed: {
+    ...mapState(cartStore, ['state'])
   },
   mounted() {
     this.getProducts()

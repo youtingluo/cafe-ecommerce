@@ -34,7 +34,7 @@ const router = createRouter({
         },
         {
           path: 'order/:id',
-          component: () => import('../views/frontPages/ConfirmPay.vue')
+          component: () => import('../views/frontPages/ConfirmPay.vue'),
         },
         {
           path: 'products/:id',

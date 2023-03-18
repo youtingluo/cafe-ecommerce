@@ -104,26 +104,47 @@
 
       <h3 class="h2 text-center">相關產品</h3>
       <div class="row my-3">
-        <div class="col-md-6 mb-2">
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="產品">
-            <div class="card-body">
-              <h5 class="card-title">冰咖啡</h5>
-              <p class="card-text">濃醇香</p>
-              <a href="#" class="btn btn-primary">加入購物車</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 mb-2">
-          <div class="card">
-            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80" class="card-img-top" alt="產品">
-            <div class="card-body">
-              <h5 class="card-title">冰咖啡</h5>
-              <p class="card-text">濃醇香</p>
-              <a href="#" class="btn btn-primary">加入購物車</a>
-            </div>
-          </div>
+        <div class="col-md-3" v-for="item in products" :key="item.id">
+          <router-link :to="`/products/${item.id}`">
+              <div class="card product-card">
+                <div class="card-head">
+                  <img
+                    class="card-img-top bg-cover"
+                    height="300"
+                    :src="item.imageUrl"
+                    alt="產品"
+                    :title="item.title"
+                  />
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{ item.title }}</h5>
+                  <p class="card-text">
+                    NT$ {{ item.price }} /
+                    <small class="text-muted text-decoration-line-through"
+                      >NT$ {{ item.origin_price }}</small
+                    >
+                  </p>
+                  <div class="d-flex justify-content-between">
+                    <button
+                      type="button"
+                      class="btn btn-primary me-auto"
+                      :disabled="state === item.id"
+                      @click.prevent="() => addToCart(item.id)"
+                    >
+                      <span
+                        v-if="state === item.id"
+                        class="spinner-grow text-secondary spinner-grow-sm"
+                      ></span>
+                      加入購物車
+                    </button>
+                    <button type="button" class="btn btn-outline-danger">
+                      <i class="bi bi-heart"></i>
+                      加入收藏
+                    </button>
+                  </div>
+                </div>
+              </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -141,14 +162,19 @@ export default {
     return {
       isLoading: false,
       product: {},
+      products: [],
       desStr: [],
-      qty: 1
+      qty: 1,
+      category: ''
     }
   },
   components: {
     Loading
   },
   watch: {
+    $route() {
+      this.getProduct()
+    },
     product: {
       handler(val) {
         const desArr = val.description.split(',');
@@ -164,11 +190,24 @@ export default {
       const { id } = this.$route.params
       this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/product/${id}`)
         .then(res => {
+          console.log(res.data);
+          this.category = res.data.product.category
           this.product = res.data.product
           this.isLoading = false
         })
         .catch(err => {
           console.log(err.response.data.message);
+        })
+    },
+    getProducts() {
+      this.$http(
+        `${VITE_URL}/v2/api/${VITE_PATH}/products?category=${this.category}`
+      )
+        .then((res) => {
+          this.products = res.data.products
+        })
+        .catch((err) => {
+          console.log(err.response.data.message)
         })
     },
   },
@@ -177,6 +216,7 @@ export default {
   },
   mounted() {
     this.getProduct()
+    this.getProducts()
   }
 }
 </script>
@@ -188,6 +228,21 @@ export default {
   z-index: 3;
   @include pad {
     width: 100%;
+  }
+}
+.product-card {
+  .card-head {
+  overflow: hidden;
+  }
+  overflow: hidden;
+  img {
+    transition: 0.3s;
+  }
+  &:hover img {
+    transform: scale(1.2);
+  }
+  &:hover {
+    box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2);
   }
 }
 .product-img {

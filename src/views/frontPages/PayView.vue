@@ -93,8 +93,6 @@ export default {
       }
       this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/order`, { data })
         .then(res => {
-          console.log(res);
-          console.log('送出訂單');
           this.getCarts()
           this.$refs.form.resetForm()
           this.$router.replace(`/order/${res.data.orderId}`)

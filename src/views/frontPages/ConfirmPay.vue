@@ -82,10 +82,8 @@ export default {
   },
   methods: {
     getOrder() {
-      console.log(this.$route.params)
       const { id } = this.$route.params
       this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/order/${id}`).then((res) => {
-        console.log(res.data)
         this.products = res.data.order.products
         this.user = res.data.order.user
         this.create_at = res.data.order.create_at
@@ -95,8 +93,7 @@ export default {
     },
     sendOrder() {
       const { id } = this.$route.params
-      this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/pay/${id}`).then((res) => {
-        console.log(res);
+      this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/pay/${id}`).then(() => {
         this.getOrder()
       })
     }

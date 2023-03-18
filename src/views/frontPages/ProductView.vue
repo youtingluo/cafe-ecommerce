@@ -208,17 +208,15 @@ export default {
     getProduct() {
       this.isLoading = true
       const { id } = this.$route.params
-      console.log(id);
       this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/product/${id}`)
         .then(res => {
-          console.log(res.data);
           this.category = res.data.product.category
           this.product = res.data.product
           this.isLoading = false
           this.getProducts()
         })
         .catch(err => {
-          console.log(err.response.data.message);
+          alert(err.response.data.message);
         })
     },
     getProducts() {
@@ -229,7 +227,7 @@ export default {
           this.products = res.data.products
         })
         .catch((err) => {
-          console.log(err.response.data.message)
+          alert(err.response.data.message)
         })
     },
   },

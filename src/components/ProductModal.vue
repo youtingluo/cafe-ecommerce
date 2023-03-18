@@ -209,7 +209,7 @@
 
 <script>
 import Modal from 'bootstrap/js/dist/modal'
-const { VITE_USER, VITE_PATH } = import.meta.env
+const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
   props: ['isNew', 'product'],
   data () {
@@ -235,7 +235,7 @@ export default {
       const formData = new FormData()
       this.uploading = true
       formData.append('file-to-upload', file)
-      this.$http.post(`${VITE_PATH}/v2/api/${VITE_USER}/admin/upload`, formData)
+      this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/admin/upload`, formData)
         .then(res => {
           this.tempProduct.imageUrl = res.data.imageUrl
           this.$refs.fileInput.value = ''

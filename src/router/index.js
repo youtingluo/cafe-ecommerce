@@ -65,7 +65,8 @@ const router = createRouter({
       ]
     }
   ],
-  scrollBehavior () {
+  scrollBehavior (to, from) {
+    console.log(to, from);
     return { top: 0 }
   }
 })

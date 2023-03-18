@@ -45,7 +45,7 @@
                   </button>
                 </div>
                 <div class="col-md-6">
-                  <button type="button" class="btn btn-outline-danger w-100 mt-2">
+                  <button type="button" class="btn btn-outline-danger w-100 mt-2" @click="() => addToCollect(product)">
                     <i class="bi bi-heart"></i> 加入收藏
                   </button>
                 </div>
@@ -101,11 +101,11 @@
           </div>
         </div>
       </div>
-
       <h3 class="h2 text-center">相關產品</h3>
-      <div class="row my-3">
-        <div class="col-md-3" v-for="item in products" :key="item.id">
-          <router-link :to="`/products/${item.id}`">
+      <!-- swiper -->
+      <swiper-container class="row pb-3 my-3" :breakpoints="{768: {slidesPerView: 2}, 1024: { slidesPerView: 3}}" :scrollbar="{ draggable: true }">
+        <swiper-slide class="col-4" v-for="item in products" :key="item.id">
+          <a href="#" @click.prevent="() => $router.push(`/products/${item.id}`)">
               <div class="card product-card">
                 <div class="card-head">
                   <img
@@ -129,7 +129,7 @@
                       type="button"
                       class="btn btn-primary me-auto"
                       :disabled="state === item.id"
-                      @click.prevent="() => addToCart(item.id)"
+                      @click.prevent.stop="() => addToCart(item.id)"
                     >
                       <span
                         v-if="state === item.id"
@@ -137,16 +137,17 @@
                       ></span>
                       加入購物車
                     </button>
-                    <button type="button" class="btn btn-outline-danger">
+                    <button type="button" class="btn btn-outline-danger"
+                    @click.prevent.stop="() => addToCollect(item)">
                       <i class="bi bi-heart"></i>
                       加入收藏
                     </button>
                   </div>
                 </div>
               </div>
-          </router-link>
-        </div>
-      </div>
+            </a>  
+        </swiper-slide>
+      </swiper-container>
     </div>
   </div>
 </template>
@@ -156,6 +157,10 @@ import { mapActions, mapState } from 'pinia'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 import { cartStore } from '../../stores/cart'
+import { register } from 'swiper/element/bundle';
+import { collectStore } from '../../stores/collect';
+// register Swiper custom elements
+register();
 const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
   data() {
@@ -169,10 +174,13 @@ export default {
     }
   },
   components: {
-    Loading
+    Loading,
   },
   watch: {
     $route() {
+      if(!this.$route.params.id) {
+        return
+      }
       this.getProduct()
     },
     product: {
@@ -185,15 +193,18 @@ export default {
   },
   methods: {
     ...mapActions(cartStore, ['addToCart', 'getCart']),
+    ...mapActions(collectStore, ['addToCollect', 'getCollects']),
     getProduct() {
       this.isLoading = true
       const { id } = this.$route.params
+      console.log(id);
       this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/product/${id}`)
         .then(res => {
           console.log(res.data);
           this.category = res.data.product.category
           this.product = res.data.product
           this.isLoading = false
+          this.getProducts()
         })
         .catch(err => {
           console.log(err.response.data.message);
@@ -212,11 +223,12 @@ export default {
     },
   },
   computed: {
-    ...mapState(cartStore, ['state'])
+    ...mapState(cartStore, ['state']),
+    ...mapState(collectStore, ['collects'])
   },
   mounted() {
+    this.getCollects()
     this.getProduct()
-    this.getProducts()
   }
 }
 </script>
@@ -247,7 +259,7 @@ export default {
 }
 .product-img {
   width: 100%;
-  max-height: 400px;
+  max-height: 500px;
 }
 .nav-link.active {
   background: #676767;

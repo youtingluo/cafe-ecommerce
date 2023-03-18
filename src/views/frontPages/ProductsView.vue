@@ -19,7 +19,7 @@
     </div>
     <div class="container mt-3">
       <div class="row sticky-top">
-        <div class="col-md-6 col-lg-4 mb-3 mb-md-0">
+        <div class="col-md-6 col-lg-5 mb-3 mb-md-0">
           <div class="btn-group" role="group" aria-label="Basic example">
             <button
               type="button"
@@ -90,7 +90,8 @@
                     ></span>
                     加入購物車
                   </button>
-                  <button type="button" class="btn btn-outline-danger">
+                  <button type="button" class="btn btn-outline-danger"
+                  @click.prevent="() => addToCollect(product)">
                     <i class="bi bi-heart"></i>
                     加入收藏
                   </button>
@@ -113,6 +114,7 @@ import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 import Pagination from '../../components/PaginationComponent.vue'
 import { cartStore } from '../../stores/cart'
+import { collectStore } from '../../stores/collect'
 const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
   data() {
@@ -121,7 +123,7 @@ export default {
       products: [],
       pagination: {},
       categories: [],
-      selectedCategory: ''
+      selectedCategory: '',
     }
   },
   watch: {
@@ -135,6 +137,7 @@ export default {
   },
   methods: {
     ...mapActions(cartStore, ['addToCart', 'getCarts']),
+    ...mapActions(collectStore, ['addToCollect', 'getCollects']),
     getProducts(page = 1) {
       this.isLoading = true
       this.$http(
@@ -146,7 +149,7 @@ export default {
           this.isLoading = false
         })
         .catch((err) => {
-          console.log(err.response.data.message)
+          alert(err.response.data.message)
         })
     },
     getCategory() {
@@ -162,14 +165,16 @@ export default {
           })
         })
         .catch((err) => {
-          console.log(err.response.data.message)
+          alert(err.response.data.message)
         })
-    }
+    },
   },
   computed: {
-    ...mapState(cartStore, ['state'])
+    ...mapState(cartStore, ['state']),
+    ...mapState(collectStore, ['collects'])
   },
   mounted() {
+    this.getCollects()
     this.getProducts()
     this.getCategory()
   }

@@ -16,7 +16,6 @@ export const cartStore = defineStore('cart', {
       this.isLoading = true
       axios.get(`${VITE_URL}/v2/api/${VITE_PATH}/cart`)
         .then(res => {
-          console.log(res.data);
           this.carts = res.data.data.carts
           this.final_total = res.data.data.final_total
           this.total = res.data.data.total

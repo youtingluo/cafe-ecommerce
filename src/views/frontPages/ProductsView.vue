@@ -90,10 +90,15 @@
                     ></span>
                     加入購物車
                   </button>
-                  <button type="button" class="btn btn-outline-danger"
+                  <button v-if="!isFav(product.id)" type="button" class="btn btn-outline-danger"
                   @click.prevent="() => addToCollect(product)">
                     <i class="bi bi-heart"></i>
                     加入收藏
+                  </button>
+                  <button v-else type="button" class="btn btn-danger"
+                  @click.prevent="() => removeCollect(product)">
+                    <i class="bi bi-heart"></i>
+                    已收藏
                   </button>
                 </div>
               </div>
@@ -137,7 +142,7 @@ export default {
   },
   methods: {
     ...mapActions(cartStore, ['addToCart', 'getCarts']),
-    ...mapActions(collectStore, ['addToCollect', 'getCollects']),
+    ...mapActions(collectStore, ['addToCollect', 'getCollects', 'removeCollect']),
     getProducts(page = 1) {
       this.isLoading = true
       this.$http(
@@ -168,8 +173,16 @@ export default {
           alert(err.response.data.message)
         })
     },
+    getIncludesFav() {
+      this.products
+    }
   },
   computed: {
+    isFav() {
+      return (id) => {
+        return (this.collects.filter(item => item.id === id)).length
+      }
+    },
     ...mapState(cartStore, ['state']),
     ...mapState(collectStore, ['collects'])
   },

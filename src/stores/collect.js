@@ -8,6 +8,7 @@ export const collectStore = defineStore('collect', {
   actions: {
     getCollects() {
       this.collects = JSON.parse(localStorage.getItem('product')) || []
+      console.log(this.collects);
     },
     addToCollect(product) {
       const sameItem = this.collects.find(item => item.id === product.id)
@@ -23,6 +24,7 @@ export const collectStore = defineStore('collect', {
       const index = this.collects.findIndex(item => item.id === product.id)
       this.collects.splice(index, 1)
       localStorage.setItem('product', JSON.stringify(this.collects))
+      console.log(this.collects);
     }
   }
 })

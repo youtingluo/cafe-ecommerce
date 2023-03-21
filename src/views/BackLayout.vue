@@ -29,19 +29,20 @@
 <script>
 const { VITE_URL } = import.meta.env
 export default {
-  data () {
+  data() {
     return {
       status: false
     }
   },
   methods: {
-    checkLogin () {
+    checkLogin() {
       const cookieValue = document.cookie
         .split('; ')
         .find((row) => row.startsWith('hexschoolToken'))
         ?.split('=')[1]
       this.$http.defaults.headers.common.Authorization = cookieValue
-      this.$http.post(`${VITE_URL}/v2/api/user/check`)
+      this.$http
+        .post(`${VITE_URL}/v2/api/user/check`)
         .then((res) => {
           if (res.data.success) {
             this.status = true
@@ -53,7 +54,7 @@ export default {
         })
     }
   },
-  mounted () {
+  mounted() {
     this.checkLogin()
   }
 }

@@ -43,7 +43,11 @@ const router = createRouter({
         {
           path: 'login',
           component: () => import('../views/frontPages/LoginView.vue')
-        }
+        },
+        {
+          path: '/:pathMatch(.*)*',
+          component: () => import('../views/frontPages/NotFuoundView.vue'),
+        },
       ]
     },
     {
@@ -65,8 +69,7 @@ const router = createRouter({
       ]
     }
   ],
-  scrollBehavior (to, from) {
-    console.log(to, from);
+  scrollBehavior () {
     return { top: 0 }
   }
 })

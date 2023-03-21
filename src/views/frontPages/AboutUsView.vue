@@ -1,9 +1,13 @@
 <template>
   <div class="position-relative">
-    <img class="top-50 imgset" src="https://images.unsplash.com/photo-1598908314732-07113901949e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80">
-    <p class="position-absolute top-50 start-50 p-2
-    bg-dark bg-opacity-50 translate-middle fs-1 text-white border-bottom border-4 border-light">
-    關於我們
+    <img
+      class="top-50 imgset"
+      src="https://storage.googleapis.com/vue-course-api.appspot.com/youting/1679368088772.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=gkPGxdJV09tlG7eTyLkc3UlmhEM8fwVRUM%2BGt885Sz2ZHBfJU132NUGaF0phyjiGlaFHaCl1Hi4btvrI5848F5v5eRFi5LjyN4wJbKpa9%2FzD8tMlwU13ZC4hN4EL5XpFGwLHSa9sDfPWh9UySEWyZvoXbM98yXi6RgGKGbPMTYr%2FWOJbm46bzCkgwyU3xCMmWkrhqzmaxeA1l900dRYxpeaHvcANukTdsBdyC0d4QBIDJusZohHbJE0E8tjAInbDsYx466vGO4Buyg4qD8irn78jjYeOaTzQiCOBgWOL0GZPjiUI6I1fO3cvObMiloDB1QhWYwViuR652egoDOuR6g%3D%3D"
+    />
+    <p
+      class="position-absolute top-50 start-50 p-2 bg-dark bg-opacity-50 translate-middle fs-1 text-white border-bottom border-4 border-light"
+    >
+      關於我們
     </p>
   </div>
   <div class="container mt-3 about-section">
@@ -11,7 +15,10 @@
     <div class="row mb-7 align-items-center">
       <div class="col-md-6 mb-7 mb-md-0">
         <div class="position-relative about-outline">
-          <img class="about-img img-fluid bg-cover position-relative" src="https://images.unsplash.com/photo-1522936643032-5f3cde4cad06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80">
+          <img
+            class="about-img img-fluid bg-cover position-relative"
+            src="https://images.unsplash.com/photo-1522936643032-5f3cde4cad06?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80"
+          />
         </div>
       </div>
       <div class="col-md-6">
@@ -37,14 +44,22 @@
       </div>
       <div class="col-md-6 mb-7 order-1 order-md-2">
         <div class="position-relative about-outline">
-          <img class="img-fluid" src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80" alt="">
+          <img
+            class="img-fluid"
+            src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80"
+            alt=""
+          />
         </div>
       </div>
     </div>
     <div class="row mb-7">
       <div class="col-md-6 mb-7">
         <div class="position-relative about-outline">
-          <img class="img-fluid about-img bg-cover position-relative" src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80" alt="">
+          <img
+            class="img-fluid about-img bg-cover position-relative"
+            src="https://images.unsplash.com/photo-1459755486867-b55449bb39ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=700&q=80"
+            alt=""
+          />
         </div>
       </div>
       <div class="col-md-6">

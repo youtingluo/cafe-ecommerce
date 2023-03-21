@@ -9,7 +9,7 @@
     <div class="position-relative">
       <img
         class="top-50 imgset"
-        src="https://images.unsplash.com/photo-1598908314732-07113901949e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80"
+        src="https://storage.googleapis.com/vue-course-api.appspot.com/youting/1679368088772.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=gkPGxdJV09tlG7eTyLkc3UlmhEM8fwVRUM%2BGt885Sz2ZHBfJU132NUGaF0phyjiGlaFHaCl1Hi4btvrI5848F5v5eRFi5LjyN4wJbKpa9%2FzD8tMlwU13ZC4hN4EL5XpFGwLHSa9sDfPWh9UySEWyZvoXbM98yXi6RgGKGbPMTYr%2FWOJbm46bzCkgwyU3xCMmWkrhqzmaxeA1l900dRYxpeaHvcANukTdsBdyC0d4QBIDJusZohHbJE0E8tjAInbDsYx466vGO4Buyg4qD8irn78jjYeOaTzQiCOBgWOL0GZPjiUI6I1fO3cvObMiloDB1QhWYwViuR652egoDOuR6g%3D%3D"
       />
       <p
         class="position-absolute top-50 start-50 p-2 bg-dark bg-opacity-50 translate-middle fs-1 text-white border-bottom border-4 border-light"
@@ -90,13 +90,21 @@
                     ></span>
                     加入購物車
                   </button>
-                  <button v-if="!isFav(product.id)" type="button" class="btn btn-outline-danger"
-                  @click.prevent="() => addToCollect(product)">
+                  <button
+                    v-if="!isFav(product.id)"
+                    type="button"
+                    class="btn btn-outline-danger"
+                    @click.prevent="() => addToCollect(product)"
+                  >
                     <i class="bi bi-heart"></i>
                     加入收藏
                   </button>
-                  <button v-else type="button" class="btn btn-danger"
-                  @click.prevent="() => removeCollect(product)">
+                  <button
+                    v-else
+                    type="button"
+                    class="btn btn-danger"
+                    @click.prevent="() => removeCollect(product)"
+                  >
                     <i class="bi bi-heart"></i>
                     已收藏
                   </button>
@@ -128,7 +136,7 @@ export default {
       products: [],
       pagination: {},
       categories: [],
-      selectedCategory: '',
+      selectedCategory: ''
     }
   },
   watch: {
@@ -180,7 +188,7 @@ export default {
   computed: {
     isFav() {
       return (id) => {
-        return (this.collects.filter(item => item.id === id)).length
+        return this.collects.filter((item) => item.id === id).length
       }
     },
     ...mapState(cartStore, ['state']),

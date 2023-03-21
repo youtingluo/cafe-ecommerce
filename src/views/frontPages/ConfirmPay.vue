@@ -2,7 +2,7 @@
   <div class="position-relative">
     <img
       class="imgset"
-      src="https://images.unsplash.com/photo-1598908314732-07113901949e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80"
+      src="https://storage.googleapis.com/vue-course-api.appspot.com/youting/1679368088772.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=gkPGxdJV09tlG7eTyLkc3UlmhEM8fwVRUM%2BGt885Sz2ZHBfJU132NUGaF0phyjiGlaFHaCl1Hi4btvrI5848F5v5eRFi5LjyN4wJbKpa9%2FzD8tMlwU13ZC4hN4EL5XpFGwLHSa9sDfPWh9UySEWyZvoXbM98yXi6RgGKGbPMTYr%2FWOJbm46bzCkgwyU3xCMmWkrhqzmaxeA1l900dRYxpeaHvcANukTdsBdyC0d4QBIDJusZohHbJE0E8tjAInbDsYx466vGO4Buyg4qD8irn78jjYeOaTzQiCOBgWOL0GZPjiUI6I1fO3cvObMiloDB1QhWYwViuR652egoDOuR6g%3D%3D"
     />
     <p
       class="position-absolute top-50 start-50 p-2 bg-dark bg-opacity-50 translate-middle fs-1 text-white border-bottom border-4 border-light"
@@ -51,10 +51,20 @@
             </p>
           </div>
         </div>
-        <button v-if="!is_paid" type="button" class="btn btn-primary w-100 rounded-0" @click="() => sendOrder()">
+        <button
+          v-if="!is_paid"
+          type="button"
+          class="btn btn-primary w-100 rounded-0"
+          @click="() => sendOrder()"
+        >
           確認付款
         </button>
-        <button v-else type="button" class="btn btn-primary w-100 rounded-0" @click="() => $router.push('/products')">
+        <button
+          v-else
+          type="button"
+          class="btn btn-primary w-100 rounded-0"
+          @click="() => $router.push('/products')"
+        >
           繼續購物
         </button>
       </div>

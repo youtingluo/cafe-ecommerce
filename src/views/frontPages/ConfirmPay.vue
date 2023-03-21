@@ -1,4 +1,10 @@
 <template>
+  <loading
+    :active="isLoading"
+    :loader="'dots'"
+    :color="'#FCF8F3'"
+    :background-color="'#676767'"
+  />
   <div class="position-relative">
     <img
       class="imgset"
@@ -55,6 +61,7 @@
           v-if="!is_paid"
           type="button"
           class="btn btn-primary w-100 rounded-0"
+          :disabled="isLoading"
           @click="() => sendOrder()"
         >
           確認付款
@@ -73,16 +80,22 @@
 </template>
 
 <script>
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/css/index.css'
 const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
   data() {
     return {
+      isLoading: false,
       products: {},
       user: {},
       create_at: 0,
       is_paid: false,
       total: false
     }
+  },
+  components: {
+    Loading
   },
   computed: {
     createTime() {
@@ -102,9 +115,15 @@ export default {
       })
     },
     sendOrder() {
+      this.isLoading = true
       const { id } = this.$route.params
       this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/pay/${id}`).then(() => {
+        this.isLoading = false
         this.getOrder()
+      })
+      .catch((err) => {
+        this.isLoading = false
+        alert(err.response.data.message)
       })
     }
   },

@@ -176,7 +176,7 @@
         :scrollbar="{ draggable: true }"
       >
         <swiper-slide class="col-4" v-for="item in products" :key="item.id">
-          <a href="#" @click.prevent="() => $router.push(`/products/${item.id}`)">
+          <router-link :to="`/products/${item.id}`">
             <div class="card product-card">
               <div class="card-head">
                 <img
@@ -229,7 +229,7 @@
                 </div>
               </div>
             </div>
-          </a>
+          </router-link>
         </swiper-slide>
       </swiper-container>
     </div>
@@ -329,24 +329,10 @@ export default {
     width: 100%;
   }
 }
-.product-card {
-  .card-head {
-    overflow: hidden;
-  }
-  overflow: hidden;
-  img {
-    transition: 0.3s;
-  }
-  &:hover img {
-    transform: scale(1.2);
-  }
-  &:hover {
-    box-shadow: 1px 1px 8px 0 rgba(0, 0, 0, 0.2);
-  }
-}
 .product-img {
   width: 100%;
   max-height: 500px;
+  min-height: 300px;
 }
 .nav-link.active {
   background: #676767;

@@ -2,7 +2,7 @@
   <div>
     <loading :active="isLoading" :loader="'dots'" :color="'#FCF8F3'" :background-color="'#676767'" />
     <div class="text-end mt-4">
-      <button class="btn btn-primary" @click="openCouponModal(true)">
+      <button class="btn btn-primary" @click="() => openCouponModal(true)">
         建立新的優惠券
       </button>
     </div>
@@ -39,14 +39,14 @@
               <button
                 type="button"
                 class="btn btn-secondary"
-                @click="openCouponModal(false, item)"
+                @click="() => openCouponModal(false, item)"
               >
                 編輯
               </button>
               <button
                 type="button"
                 class="btn btn-outline-danger"
-                @click="openRemoveModal(item)"
+                @click="() => openRemoveModal(item)"
               >
                 刪除
               </button>

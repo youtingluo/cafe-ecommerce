@@ -25,8 +25,8 @@
   </div>
   <div v-else class="container my-3 min-body-heigh">
     <div class="row">
-      <div class="col-lg-4 col-md-6" v-for="collect in collects" :key="collect.id">
-        <div @click.prevent="() => $router.push(`/products/${collect.id}`)">
+      <div class="col-lg-4 col-md-6 mb-3" v-for="collect in collects" :key="collect.id">
+        <router-link :to="`/products/${collect.id}`">
           <div class="card product-card">
             <div class="card-head">
               <img class="card-img-top bg-cover" :src="collect.imageUrl" height="300" alt="產品" />
@@ -46,7 +46,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -68,13 +68,3 @@ export default {
   }
 }
 </script>
-
-<style>
-@media (min-width: 1024px) {
-  .about {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-  }
-}
-</style>

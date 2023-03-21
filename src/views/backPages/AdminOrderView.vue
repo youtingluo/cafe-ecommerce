@@ -38,14 +38,14 @@
               <button
                 type="button"
                 class="btn btn-secondary"
-                @click="openOrderModal(item)"
+                @click="() => openOrderModal(item)"
               >
                 編輯
               </button>
               <button
                 type="button"
                 class="btn btn-outline-danger"
-                @click="openRemoveModal(item)"
+                @click="() => openRemoveModal(item)"
               >
                 刪除
               </button>
@@ -93,7 +93,6 @@ export default {
       this.isLoading = true
       this.$http.get(`${VITE_URL}/v2/api/${VITE_PATH}/admin/orders?page=${page}`)
         .then(res => {
-          console.log(res.data)
           this.orders = res.data.orders
           this.pagination = res.data.pagination
           this.isLoading = false

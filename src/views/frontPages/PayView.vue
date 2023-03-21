@@ -1,4 +1,10 @@
 <template>
+  <loading
+    :active="isLoading"
+    :loader="'dots'"
+    :color="'#FCF8F3'"
+    :background-color="'#676767'"
+  />
   <div class="position-relative">
     <img
       class="imgset"
@@ -24,6 +30,7 @@
               :class="{ 'is-invalid': errors['姓名'] }"
               rules="required"
               v-model="user.name"
+              autofocus
             />
             <ErrorMessage name="姓名" class="invalid-feedback" />
             <label for="name"> 姓名 <span class="text-danger">*</span> </label>
@@ -74,6 +81,7 @@
           <div class="form-floating mb-2 mb-md-3">
             <textarea
               class="form-control"
+              style="height: 100px"
               placeholder="想對我們說的話"
               id="Textarea"
               v-model="message"
@@ -91,7 +99,7 @@
               </button>
             </div>
             <div class="col-6">
-              <button type="submit" class="btn btn-primary ms-auto w-100">前往付款</button>
+              <button type="submit" class="btn btn-primary ms-auto w-100" :disabled="isLoading">前往付款</button>
             </div>
           </div>
         </VForm>
@@ -101,6 +109,8 @@
 </template>
 
 <script>
+import Loading from 'vue-loading-overlay'
+import 'vue-loading-overlay/dist/css/index.css'
 import { mapActions } from 'pinia'
 import { cartStore } from '../../stores/cart'
 
@@ -108,6 +118,7 @@ const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
   data() {
     return {
+      isLoading: false,
       user: {
         name: '',
         email: '',
@@ -117,17 +128,26 @@ export default {
       message: ''
     }
   },
+  components: {
+    Loading
+  },
   methods: {
     ...mapActions(cartStore, ['getCarts']),
     onSubmit() {
+      this.isLoading = true
       const data = {
         user: this.user,
         message: this.message
       }
       this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/order`, { data }).then((res) => {
+        this.isLoading = false
         this.getCarts()
         this.$refs.form.resetForm()
         this.$router.replace(`/order/${res.data.orderId}`)
+      })
+      .catch((err) => {
+        alert(err.response.data.message)
+        this.isLoading = false
       })
     }
   }

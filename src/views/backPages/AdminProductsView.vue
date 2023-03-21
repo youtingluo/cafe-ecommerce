@@ -2,7 +2,7 @@
   <div>
     <loading :active="isLoading" :loader="'dots'" :color="'#FCF8F3'" :background-color="'#676767'" />
     <div class="text-end mt-4">
-      <button class="btn btn-primary" data-bs-target="#productModal" @click="openProductModal(true)">
+      <button class="btn btn-primary" data-bs-target="#productModal" @click="() => openProductModal(true)">
         建立新的產品
       </button>
     </div>
@@ -35,14 +35,14 @@
               <button
                 type="button"
                 class="btn btn-secondary"
-                @click="openProductModal(false, product)"
+                @click="() => openProductModal(false, product)"
               >
                 編輯
               </button>
               <button
                 type="button"
                 class="btn btn-outline-danger"
-                @click="openRemoveModal(product)"
+                @click="() => openRemoveModal(product)"
               >
                 刪除
               </button>
@@ -103,7 +103,6 @@ export default {
       this.isLoading = true
       this.$http.get(`${VITE_URL}/v2/api/${VITE_PATH}/admin/products?page=${page}`)
         .then(res => {
-          console.log('後台產品： ',res.data);
           this.products = res.data.products
           this.pagination = res.data.pagination
           this.isLoading = false
@@ -157,8 +156,6 @@ export default {
     }
   },
   mounted () {
-    console.log(VITE_URL, VITE_URL);
-    console.log(`${VITE_URL}/v2/api/${VITE_PATH}/admin/products?page=`);
     this.getProducts()
   }
 }

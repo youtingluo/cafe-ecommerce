@@ -49,7 +49,8 @@ export default {
             this.$router.push('/admin/products')
           }
         })
-        .catch(() => {
+        .catch((err) => {
+          alert(err.response.data.message)
           this.$router.push('/login')
         })
     }

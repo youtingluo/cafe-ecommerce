@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&family=Ubuntu+Mono&family=Waterfall&display=swap');
 @import 'bootstrap/scss/functions';
 @import './variables';
-@import './utilities';
 @import './mixin';
+@import './utilities';
 @import 'bootstrap';
 
 // pages
-@import './pages/products';
+@import './pages/index';

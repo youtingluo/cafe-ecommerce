@@ -54,16 +54,16 @@
     <div class="offcanvas-body py-0 pe-4">
       <ul class="navbar-nav mb-lg-0 text-end">
         <li class="nav-item ms-md-5 fs-5" data-bs-dismiss="offcanvas">
-          <RouterLink class="nav-link d-inline-block" to="/">首頁</RouterLink>
+          <RouterLink class="nav-link" to="/">首頁</RouterLink>
         </li>
         <li class="nav-item ms-md-5 fs-5" data-bs-dismiss="offcanvas">
-          <RouterLink class="nav-link d-inline-block" to="/products">產品列表</RouterLink>
+          <RouterLink class="nav-link" to="/products">產品列表</RouterLink>
         </li>
         <li class="nav-item ms-md-5 fs-5" data-bs-dismiss="offcanvas">
-          <RouterLink class="nav-link d-inline-block" to="/about">關於我們</RouterLink>
+          <RouterLink class="nav-link" to="/about">關於我們</RouterLink>
         </li>
         <li class="nav-item ms-md-5 fs-5" data-bs-dismiss="offcanvas">
-          <RouterLink class="nav-link d-inline-block" to="/collect">我的收藏</RouterLink>
+          <RouterLink class="nav-link" to="/collect">我的收藏</RouterLink>
         </li>
       </ul>
     </div>

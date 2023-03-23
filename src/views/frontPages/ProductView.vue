@@ -200,7 +200,7 @@
                     type="button"
                     class="btn btn-primary me-auto"
                     :disabled="state === item.id"
-                    @click.prevent.stop="() => addToCart(item.id)"
+                    @click.prevent="() => addToCart(item.id)"
                   >
                     <span
                       v-if="state === item.id"
@@ -212,7 +212,7 @@
                     v-if="!isFav(item.id)"
                     type="button"
                     class="btn btn-outline-danger"
-                    @click.prevent.stop="() => addToCollect(item)"
+                    @click.prevent="() => addToCollect(item)"
                   >
                     <i class="bi bi-heart"></i>
                     加入收藏
@@ -221,7 +221,7 @@
                     v-else
                     type="button"
                     class="btn btn-danger"
-                    @click.prevent.stop="() => removeCollect(product)"
+                    @click.prevent="() => removeCollect(product)"
                   >
                     <i class="bi bi-heart align-middle"></i>
                     已收藏

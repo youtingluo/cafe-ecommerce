@@ -38,7 +38,7 @@
                 <button
                   type="button"
                   class="btn btn-outline-primary w-100"
-                  @click.stop="() => removeCollect(collect)"
+                  @click.prevent="() => removeCollect(collect)"
                 >
                   <i class="bi bi-heart"></i>
                   取消收藏

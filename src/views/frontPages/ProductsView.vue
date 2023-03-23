@@ -18,8 +18,8 @@
       </p>
     </div>
     <div class="container mt-3">
-      <div class="row sticky-top">
-        <div class="col-md-6 col-lg-5 mb-3 mb-md-0">
+      <div class="row">
+        <div class="col-md-6 col-lg-5 mb-3">
           <div class="btn-group" role="group" aria-label="Basic example">
             <button
               type="button"
@@ -41,7 +41,7 @@
             </button>
           </div>
         </div>
-        <div class="col-md-6 col-lg-4 ms-auto">
+        <div class="col-md-6 col-lg-4 ms-auto d-none">
           <div class="input-group mb-3">
             <input
               type="text"
@@ -165,6 +165,7 @@ export default {
         })
         .catch((err) => {
           alert(err.response.data.message)
+          this.isLoading = false
         })
     },
     getCategory() {
@@ -182,9 +183,6 @@ export default {
         .catch((err) => {
           alert(err.response.data.message)
         })
-    },
-    getIncludesFav() {
-      this.products
     }
   },
   computed: {

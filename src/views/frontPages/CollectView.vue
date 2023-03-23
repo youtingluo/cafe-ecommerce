@@ -33,7 +33,7 @@
             </div>
             <div class="card-body">
               <h5 class="card-title">{{ collect.title }}</h5>
-              <p class="card-text">NT$ {{ collect.price }} / {{ collect.unit }}</p>
+              <p class="card-text">NT$ {{ thousands(collect.price) }} / {{ collect.unit }}</p>
               <div class="d-flex justify-content-between">
                 <button
                   type="button"
@@ -55,8 +55,9 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import { collectStore } from '../../stores/collect'
-
+import mixin from '../../mixin/thousands_separators'
 export default {
+  mixins: [mixin],
   methods: {
     ...mapActions(collectStore, ['getCollects', 'removeCollect'])
   },

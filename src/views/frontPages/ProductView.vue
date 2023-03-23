@@ -51,7 +51,7 @@
                 </option>
               </select>
               <p class="ms-0 ms-md-3 mt-2 mt-md-0 d-md-inline-block">
-                <span class="fw-bold">NT$ {{ product.price }}</span> / {{ product.unit }}
+                <span class="fw-bold">NT$ {{ thousands(product.price) }}</span> / {{ product.unit }}
               </p>
               <div class="row">
                 <div class="col-md-6">
@@ -190,9 +190,9 @@
               <div class="card-body">
                 <h5 class="card-title">{{ item.title }}</h5>
                 <p class="card-text">
-                  NT$ {{ item.price }} /
+                  NT$ {{ thousands(item.price) }} /
                   <small class="text-muted text-decoration-line-through"
-                    >NT$ {{ item.origin_price }}</small
+                    >NT$ {{ thousands(item.origin_price) }}</small
                   >
                 </p>
                 <div class="d-flex justify-content-between">
@@ -243,6 +243,7 @@ import 'vue-loading-overlay/dist/css/index.css'
 import { cartStore } from '../../stores/cart'
 import { register } from 'swiper/element/bundle'
 import { collectStore } from '../../stores/collect'
+import mixin from '../../mixin/thousands_separators'
 // register Swiper custom elements
 register()
 const { VITE_URL, VITE_PATH } = import.meta.env
@@ -257,6 +258,7 @@ export default {
       category: ''
     }
   },
+  mixins: [mixin],
   components: {
     Loading
   },

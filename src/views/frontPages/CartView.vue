@@ -59,7 +59,7 @@
               <span v-if="state === cart.id" class="spinner-border spinner-border-sm"></span>
               <i v-else class="bi bi-x-circle"></i>
             </button>
-            <p class="mb-0 fw-bold">NT$ {{ cart.final_total }}</p>
+            <p class="mb-0 fw-bold">NT$ {{ thousands(cart.final_total) }}</p>
           </div>
         </div>
         <div class="d-flex justify-content-end my-3">
@@ -87,7 +87,7 @@
           </div>
           <div class="d-flex justify-content-between align-items-end mb-2">
             <p class="fs-3">總計：</p>
-            <p class="fw-bold text-danger">NT$ {{ final_total }}</p>
+            <p class="fw-bold text-danger">NT$ {{ thousands(final_total) }}</p>
           </div>
         </div>
         <router-link
@@ -106,7 +106,9 @@ import { mapActions, mapState } from 'pinia'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 import { cartStore } from '../../stores/cart'
+import mixin from '../../mixin/thousands_separators'
 export default {
+  mixins: [mixin],
   components: {
     Loading
   },

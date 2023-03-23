@@ -72,9 +72,9 @@
               <div class="card-body">
                 <h5 class="card-title">{{ product.title }}</h5>
                 <p class="card-text">
-                  NT$ {{ product.price }} /
+                  NT$ {{ thousands(product.price) }} /
                   <small class="text-muted text-decoration-line-through"
-                    >NT$ {{ product.origin_price }}</small
+                    >NT$ {{ thousands(product.origin_price) }}</small
                   >
                 </p>
                 <div class="d-flex justify-content-between">
@@ -128,6 +128,7 @@ import 'vue-loading-overlay/dist/css/index.css'
 import Pagination from '../../components/PaginationComponent.vue'
 import { cartStore } from '../../stores/cart'
 import { collectStore } from '../../stores/collect'
+import mixin from '../../mixin/thousands_separators'
 const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
   data() {
@@ -139,6 +140,7 @@ export default {
       selectedCategory: ''
     }
   },
+  mixins: [mixin],
   watch: {
     selectedCategory() {
       this.getProducts()

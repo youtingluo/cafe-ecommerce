@@ -41,13 +41,13 @@
             <div class="d-flex flex-column">
               <p class="text-end border-bottom pb-3" v-for="item in products" :key="item.id">
                 {{ item.product.title }} x {{ item.qty }} <br />
-                <small class="text-muted">NT$ {{ item.final_total }}</small>
+                <small class="text-muted">NT$ {{ thousands(item.final_total) }}</small>
               </p>
             </div>
           </div>
           <div class="d-flex justify-content-between align-items-end mb-2">
             <p class="fs-3">總計：</p>
-            <p class="fw-bold text-danger">NT$ {{ total }}</p>
+            <p class="fw-bold text-danger">NT$ {{ thousands(total) }}</p>
           </div>
           <div class="d-flex justify-content-between align-items-end mb-2">
             <p class="fs-3">付款狀態：</p>
@@ -82,6 +82,7 @@
 <script>
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
+import mixin from '../../mixin/thousands_separators'
 const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
   data() {
@@ -94,6 +95,7 @@ export default {
       total: false
     }
   },
+  mixins: [mixin],
   components: {
     Loading
   },

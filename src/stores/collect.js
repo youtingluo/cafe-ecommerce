@@ -14,8 +14,6 @@ export const collectStore = defineStore('collect', {
       if(!sameItem) {
         this.collects.push(product)
         localStorage.setItem('product', JSON.stringify(this.collects))
-      } else {
-        console.log('已經加入囉')
       }
       this.getCollects()
     },
@@ -23,7 +21,6 @@ export const collectStore = defineStore('collect', {
       const index = this.collects.findIndex(item => item.id === product.id)
       this.collects.splice(index, 1)
       localStorage.setItem('product', JSON.stringify(this.collects))
-      console.log(this.collects);
     }
   }
 })

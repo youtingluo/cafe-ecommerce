@@ -21,7 +21,7 @@
       </div>
     </nav>
     <div class="container mt-3">
-      <router-view v-if="status" />
+      <RouterView v-if="status" />
     </div>
   </div>
 </template>

@@ -20,7 +20,7 @@
       <i class="bi bi-basket" style="font-size: 3rem"></i>
     </div>
     <div>
-      <router-link class="btn btn-primary d-inline-block" to="/products">馬上去選購</router-link>
+      <RouterLink class="btn btn-primary d-inline-block" to="/products">馬上去選購</RouterLink>
     </div>
   </div>
 
@@ -44,7 +44,7 @@
               class="form-select form-select-sm mt-2 selectQty"
               :disabled="state === cart.id"
               v-model="cart.qty"
-              @change="() => updateCart(cart.id, cart.qty)"
+              @change="() => updateCart(cart, cart.qty)"
             >
               <option selected :value="i" v-for="i in 10" :key="`${i}5235`">{{ i }}</option>
             </select>
@@ -74,7 +74,7 @@
           </button>
         </div>
       </div>
-      <div class="col-md-4 mt-md-0">
+      <div class="col-md-4 mt-4 mt-md-0">
         <div class="text-dark border border-dark p-3">
           <h2 class="text-center border-bottom border-2 pb-3 mb-3">訂單明細</h2>
           <div class="d-flex justify-content-between align-items-start mb-2">
@@ -90,12 +90,11 @@
             <p class="fw-bold text-danger">NT$ {{ thousands(final_total) }}</p>
           </div>
         </div>
-        <router-link
+        <RouterLink
           :to="`cart/${carts[0].id}`"
-          type="button"
           class="btn btn-dark btn-lg rounded-0 w-100"
           >結帳
-        </router-link>
+        </RouterLink>
       </div>
     </div>
   </div>

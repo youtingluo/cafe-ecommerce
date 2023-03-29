@@ -9,7 +9,7 @@
     <div class="position-relative">
       <img
         class="top-50 imgset bg-mask"
-        src="https://storage.googleapis.com/vue-course-api.appspot.com/youting/1679368088772.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=gkPGxdJV09tlG7eTyLkc3UlmhEM8fwVRUM%2BGt885Sz2ZHBfJU132NUGaF0phyjiGlaFHaCl1Hi4btvrI5848F5v5eRFi5LjyN4wJbKpa9%2FzD8tMlwU13ZC4hN4EL5XpFGwLHSa9sDfPWh9UySEWyZvoXbM98yXi6RgGKGbPMTYr%2FWOJbm46bzCkgwyU3xCMmWkrhqzmaxeA1l900dRYxpeaHvcANukTdsBdyC0d4QBIDJusZohHbJE0E8tjAInbDsYx466vGO4Buyg4qD8irn78jjYeOaTzQiCOBgWOL0GZPjiUI6I1fO3cvObMiloDB1QhWYwViuR652egoDOuR6g%3D%3D"
+        src="https://storage.googleapis.com/vue-course-api.appspot.com/youting/1679368088772.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=gkPGxdJV09tlG7eTyLkc3UlmhEM8fwVRUM%2BGt885Sz2ZHBfJU132NUGaF0phyjiGlaFHaCl1Hi4btvrI5848F5v5eRFi5LjyN4wJbKpa9%2FzD8tMlwU13ZC4hN4EL5XpFGwLHSa9sDfPWh9UySEWyZvoXbM98yXi6RgGKGbPMTYr%2FWOJbm46bzCkgwyU3xCMmWkrhqzmaxeA1l900dRYxpeaHvcANukTdsBdyC0d4QBIDJusZohHbJE0E8tjAInbDsYx466vGO4Buyg4qD8irn78jjYeOaTzQiCOBgWOL0GZPjiUI6I1fO3cvObMiloDB1QhWYwViuR652egoDOuR6g%3D%3D" alt="banner圖片，為一杯咖啡"
       />
       <p
         class="position-absolute top-50 start-50 p-2 bg-dark bg-opacity-50 translate-middle fs-1 text-white border-bottom border-4 border-light"
@@ -18,27 +18,26 @@
       </p>
     </div>
     <div class="container">
-      <div class="row py-3">
+      <div class="row py-3 py-lg-7">
         <div class="col-md-6">
           <img
             class="product-img bg-cover"
             :src="product.imageUrl"
-            alt="商品圖片"
             :title="product.title"
           />
         </div>
         <div class="col-md-6">
           <div class="d-flex flex-column justify-content-between h-100">
-            <div class="text-center">
+            <div>
               <h1 class="mt-3 mt-md-0 mb-3">
                 {{ product.title }}
               </h1>
             </div>
             <div>
-              <span class="badge rounded-pill text-bg-info text-light">
+              <small class="badge rounded-pill text-bg-dark text-light fs-6">
                 {{ product.category }}
-              </span>
-              <p v-html="product.content" class="mb-3 mt-2"></p>
+              </small>
+              <p v-html="product.content" class="mb-3 mt-3"></p>
             </div>
             <div>
               <select
@@ -53,7 +52,7 @@
               <p class="ms-0 ms-md-3 mt-2 mt-md-0 d-md-inline-block">
                 <span class="fw-bold">NT$ {{ thousands(product.price) }}</span> / {{ product.unit }}
               </p>
-              <div class="row">
+              <div class="row align-items-end">
                 <div class="col-md-6">
                   <button
                     type="button"
@@ -68,11 +67,11 @@
                     加入購物車
                   </button>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-3">
                   <button
                     v-if="!isFav(product.id)"
                     type="button"
-                    class="btn btn-outline-danger w-100 mt-2"
+                    class="btn btn-sm btn-outline-danger w-100 mt-2"
                     @click="() => addToCollect(product)"
                   >
                     <i class="bi bi-heart align-middle"></i> 加入收藏
@@ -80,7 +79,7 @@
                   <button
                     v-else
                     type="button"
-                    class="btn btn-danger w-100 mt-2"
+                    class="btn btn-sm btn-danger w-100 mt-2"
                     @click.prevent="() => removeCollect(product)"
                   >
                     <i class="bi bi-heart align-middle"></i>
@@ -176,14 +175,13 @@
         :scrollbar="{ draggable: true }"
       >
         <swiper-slide class="col-4" v-for="item in products" :key="item.id">
-          <router-link :to="`/products/${item.id}`">
+          <router-link :class="{'pe-none': state === item.id }" :to="`/products/${item.id}`">
             <div class="card product-card">
               <div class="card-head">
                 <img
                   class="card-img-top bg-cover"
                   height="300"
                   :src="item.imageUrl"
-                  alt="產品"
                   :title="item.title"
                 />
               </div>

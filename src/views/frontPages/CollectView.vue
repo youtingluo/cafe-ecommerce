@@ -13,23 +13,23 @@
 
   <div
     v-if="!collects.length"
-    class="container my-3 min-body-heigh d-flex flex-column align-items-center justify-content-center"
+    class="container my-3 d-flex flex-column align-items-center justify-content-center min-body-heigh"
   >
     <div class="mb-5 text-center">
       <h3>您還沒有收藏，去逛逛吧</h3>
       <i class="bi bi-heart" style="font-size: 3rem"></i>
     </div>
     <div>
-      <router-link class="btn btn-primary d-inline-block" to="/products">馬上去選購</router-link>
+      <RouterLink class="btn btn-primary d-inline-block" to="/products">馬上去選購</RouterLink>
     </div>
   </div>
   <div v-else class="container my-3 min-body-heigh">
     <div class="row">
       <div class="col-lg-4 col-md-6 mb-3" v-for="collect in collects" :key="collect.id">
-        <router-link :to="`/products/${collect.id}`">
+        <RouterLink :class="{'pe-none': state === collect.id }" :to="`/products/${collect.id}`">
           <div class="card product-card">
             <div class="card-head">
-              <img class="card-img-top bg-cover" :src="collect.imageUrl" height="300" alt="產品" />
+              <img class="card-img-top bg-cover" :src="collect.imageUrl" height="300" />
             </div>
             <div class="card-body">
               <h5 class="card-title">{{ collect.title }}</h5>
@@ -37,7 +37,19 @@
               <div class="d-flex justify-content-between">
                 <button
                   type="button"
-                  class="btn btn-outline-primary w-100"
+                  class="btn btn-primary"
+                  :disabled="state === collect.id"
+                  @click.prevent="() => addToCart(collect.id)"
+                >
+                  <span
+                    v-if="state === collect.id"
+                    class="spinner-grow text-secondary spinner-grow-sm"
+                  ></span>
+                  加入購物車
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-outline-primary"
                   @click.prevent="() => removeCollect(collect)"
                 >
                   <i class="bi bi-heart"></i>
@@ -46,7 +58,7 @@
               </div>
             </div>
           </div>
-        </router-link>
+        </RouterLink>
       </div>
     </div>
   </div>
@@ -55,14 +67,17 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import { collectStore } from '../../stores/collect'
+import { cartStore } from '../../stores/cart'
 import mixin from '../../mixin/thousands_separators'
 export default {
   mixins: [mixin],
   methods: {
-    ...mapActions(collectStore, ['getCollects', 'removeCollect'])
+    ...mapActions(collectStore, ['getCollects', 'removeCollect']),
+    ...mapActions(cartStore, ['addToCart'])
   },
   computed: {
-    ...mapState(collectStore, ['collects'])
+    ...mapState(collectStore, ['collects']),
+    ...mapState(cartStore, ['state'])
   },
   mounted() {
     this.getCollects()

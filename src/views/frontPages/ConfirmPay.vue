@@ -33,11 +33,11 @@
       <div class="col-md-6">
         <div class="text-dark border border-dark p-3">
           <h2 class="text-center border-bottom border-2 pb-3 mb-3">訂單明細</h2>
-          <p>
+          <p class="mb-3">
             建立日期：<span class="text-info">{{ createTime }}</span>
           </p>
           <div class="d-flex justify-content-between align-items-start mb-2">
-            <span class="fs-5">品項：</span>
+            <span>品項：</span>
             <div class="d-flex flex-column">
               <p class="text-end border-bottom pb-3" v-for="item in products" :key="item.id">
                 {{ item.product.title }} x {{ item.qty }} <br />
@@ -46,11 +46,11 @@
             </div>
           </div>
           <div class="d-flex justify-content-between align-items-end mb-2">
-            <p class="fs-3">總計：</p>
+            <p>總計：</p>
             <p class="fw-bold text-danger">NT$ {{ thousands(total) }}</p>
           </div>
           <div class="d-flex justify-content-between align-items-end mb-2">
-            <p class="fs-3">付款狀態：</p>
+            <p>付款狀態：</p>
             <p class="fw-bold">
               <span v-if="is_paid" class="text-success">已付款</span>
               <span v-else class="text-muted">未付款</span>

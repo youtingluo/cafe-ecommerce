@@ -54,20 +54,19 @@
       </div>
       <div class="row">
         <template v-if="searchContent">
-          <h3>以下為您顯示 {{ searchContent }} 的結果
-            <button class="btn btn-outline-primary btn-sm" @click="() => getProducts()">
+          <h3 class="mb-3">以下為您顯示 {{ searchContent }} 的結果
+            <button class="btn btn-outline-primary btn-sm mt-2" @click="() => getProducts()">
               <i class="bi bi-x-circle"></i> 取消搜尋</button>
           </h3>
           
           <div v-for="product in searchResult" :key="product.id" class="col-lg-4 col-md-6 mb-3">
-          <router-link :to="`products/${product.id}`">
+          <RouterLink :class="{'pe-none': state === product.id }" :to="`products/${product.id}`">
             <div class="card product-card">
               <div class="card-head">
                 <img
                   class="card-img-top bg-cover"
                   height="300"
                   :src="product.imageUrl"
-                  alt="產品"
                   :title="product.title"
                 />
               </div>
@@ -113,7 +112,7 @@
                 </div>
               </div>
             </div>
-          </router-link>
+          </RouterLink>
           </div>
           <div v-if="searchResult.length === 0" class="col text-center min-body-heigh">
             <h2>查無商品</h2>
@@ -123,14 +122,13 @@
         
         <template v-else>
           <div v-for="product in products" :key="product.id" class="col-lg-4 col-md-6 mb-3">
-            <router-link :to="`products/${product.id}`">
+            <RouterLink :class="{'pe-none': state === product.id }" :to="`products/${product.id}`">
               <div class="card product-card">
                 <div class="card-head">
                   <img
                     class="card-img-top bg-cover"
                     height="300"
                     :src="product.imageUrl"
-                    alt="產品"
                     :title="product.title"
                   />
                 </div>
@@ -146,7 +144,7 @@
                     <button
                       type="button"
                       class="btn btn-primary me-auto"
-                      :disabled="state === product.id"
+                      
                       @click.prevent="() => addToCart(product.id)"
                     >
                       <span
@@ -176,7 +174,7 @@
                   </div>
                 </div>
               </div>
-            </router-link>
+            </RouterLink>
           </div>
         </template>
       </div>

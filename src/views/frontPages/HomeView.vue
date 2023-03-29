@@ -3,10 +3,14 @@
     <div class="container">
       <img
         class="banner-text position-absolute d-none d-lg-block"
-        src="@/image/text.png"
-        alt="text"
+        src="@/assets/image/text.png"
+        alt="讓咖啡與芬芳豐富你的每一天"
       />
-      <img class="position-absolute d-block d-lg-none" src="@/image/text-mobile.png" alt="text" />
+      <img class="position-absolute d-block d-lg-none" src="@/assets/image/text-mobile.png" alt="讓咖啡與芬芳豐富你的每一天" />
+      <div class="d-flex flex-column justify-content-end align-items-center">
+        <h1 class="mb-9 text-dark waterfall">Cafe beat</h1>
+        <button type="button" class="btn btn-outline-dark">探索商品</button>
+      </div>
     </div>
   </div>
 
@@ -20,7 +24,7 @@
     <div class="container">
       <div class="row align-items-center g-0">
         <div class="col-md-6 mb-3 mb-md-0">
-          <img class="img-fluid bg-cover" src="@/image/explore1.png" alt="explore1" />
+          <img class="img-fluid bg-cover" src="@/assets/image/explore1.png" alt="一杯咖啡擺放在白色桌上與陽光照射下" />
         </div>
         <div class="col-md-6 mb-3 mb-md-0">
           <p class="h5 text-center mb-3 kiwi">繁忙工作中 治癒疲憊身心的飲品</p>
@@ -29,18 +33,17 @@
       </div>
       <div class="row align-items-center g-0">
         <div class="col-md-6 order-md-2 mb-3 mb-md-0">
-          <img class="img-fluid bg-cover order-md-1" src="@/image/explore2.png" alt="explore1" />
+          <img class="img-fluid bg-cover order-md-1" src="@/assets/image/explore2.png" alt="三杯由淺色致深色的咖啡" />
         </div>
         <div class="col-md-6 order-md-1">
           <div class="text-center">
             <p class="h6 text-center mb-3 kiwi">尋找屬於你的味道</p>
-            <router-link
+            <RouterLink
               to="/products"
               class="btn btn-light fw-bold text-primary border explore-button rounded-1"
-              type="button"
             >
               探索商品
-            </router-link>
+            </RouterLink>
           </div>
         </div>
       </div>
@@ -59,7 +62,7 @@
           >
             <span class="h3">淺焙</span>最原始的風味
           </div>
-          <img class="img-fluid" src="@/image/knowledge1.png" alt="knowledge1" />
+          <img class="img-fluid" src="@/assets/image/knowledge1.png" alt="將咖啡倒入咖啡杯中的動作" />
         </div>
         <div class="col-lg-4 offset-n1 z-index-3">
           <div class="py-7 px-5 bg-secondary mb-3 bg-opacity-90 letter-space">
@@ -79,7 +82,7 @@
           >
             <span class="h3">中焙</span>醇厚與酸味的平衡
           </div>
-          <img class="img-fluid" src="@/image/knowledge2.png" alt="knowledge2" />
+          <img class="img-fluid" src="@/assets/image/knowledge2.png" alt="一碗擺放著中焙的咖啡豆" />
         </div>
         <div class="col-lg-4 offset-n1 z-index-3">
           <div class="py-7 px-5 bg-secondary mb-3 bg-opacity-90 letter-space">
@@ -99,7 +102,7 @@
           >
             <span class="h3">深焙</span>醇厚且濃烈的口感
           </div>
-          <img class="img-fluid" src="@/image/knowledge3.png" alt="knowledge3" />
+          <img class="img-fluid" src="@/assets/image/knowledge3.png" alt="一碗擺放著深焙的咖啡豆" />
         </div>
         <div class="col-lg-4 offset-n1 z-index-3">
           <div class="py-7 px-5 bg-secondary mb-3 bg-opacity-90 letter-space">
@@ -120,19 +123,19 @@
       <h2 class="h5 text-center kiwi mb-6">堅持</h2>
       <div class="row justify-content-center">
         <div class="col-md-4 d-flex justify-content-center align-items-center position-relative">
-          <img class="filter img-fluid" src="@/image/promise1.png" alt="promise1" />
+          <img class="filter img-fluid" src="@/assets/image/promise1.png" alt="樹上長著一串咖啡豆" />
           <div class="position-absolute">
             <div class="text-white fs-5">新鮮原豆</div>
           </div>
         </div>
         <div class="col-md-4 d-flex justify-content-center align-items-center position-relative">
-          <img class="filter img-fluid" src="@/image/promise2.png" alt="promise2" />
+          <img class="filter img-fluid" src="@/assets/image/promise2.png" alt="鐵盤中鋪著新鮮咖啡豆" />
           <div class="position-absolute">
             <div class="text-white fs-5">當日配送</div>
           </div>
         </div>
         <div class="col-md-4 d-flex justify-content-center align-items-center position-relative">
-          <img class="filter img-fluid" src="@/image/promise3.png" alt="promise3" />
+          <img class="filter img-fluid" src="@/assets/image/promise3.png" alt="整齊擺好包裝好的咖啡豆" />
           <div class="position-absolute">
             <div class="text-white fs-5">完整包裝</div>
           </div>
@@ -153,7 +156,7 @@
           >
             <span class="h3">聞香而來</span><span class="align-text-bottom">—</span> 咖啡豆系列
           </div>
-          <img class="img-fluid" src="@/image/shopping1.png" alt="shopping1" />
+          <img class="img-fluid" src="@/assets/image/shopping1.png" alt="鐵製的咖啡匙裝個滿滿咖啡豆" />
         </div>
         <div class="col-md-4 position-relative mb-md-0 mb-3">
           <div
@@ -161,7 +164,7 @@
           >
             <span class="h3">視覺饗宴</span><span class="align-text-bottom">—</span> 咖啡杯系列
           </div>
-          <img class="img-fluid" src="@/image/shopping2.png" alt="shopping2" />
+          <img class="img-fluid" src="@/assets/image/shopping2.png" alt="一杯冒著熱氣的熱拿鐵" />
         </div>
         <div class="col-md-4 position-relative mb-md-0 mb-3">
           <div
@@ -169,7 +172,7 @@
           >
             <span class="h3">大師養成</span><span class="align-text-bottom">—</span> 咖啡用具系列
           </div>
-          <img class="img-fluid" src="@/image/shopping3.png" alt="shopping3" />
+          <img class="img-fluid" src="@/assets/image/shopping3.png" alt="正在濾泡中的咖啡慢慢滴入咖啡壺中" />
         </div>
       </div>
     </div>
@@ -183,11 +186,26 @@
           <div class="bg-primaryone py-7 coupon text-center">
             <div class="h5">獲得優惠</div>
             <div class="h6 text-primaryfour">不定期分享咖啡知識與限定優惠</div>
-            <div class="input-group w-50 mx-auto mt-4">
-              <input type="text" class="form-control rounded-1" placeholder="請輸入 Email" />
-              <button class="btn btn-light border border-1 rounded-1 text-primary" type="button">
+            <div class="px-2">
+              <VForm ref="couponForm"
+                class="input-group mx-auto mt-4 coupon-form" v-slot="{ errors }"
+                @submit="() => getCoupon()">
+                <VField
+                type="email"
+                name="信箱"
+                class="form-control"
+                :class="{ 'is-invalid': errors['信箱'] }"
+                rules="required|email"
+                id="floatingInput"
+                placeholder="name@example.com"
+                required
+                autofocus
+              />
+              <button type="submit" class="btn btn-light border border-1 rounded-1 text-primary">
                 送出
               </button>
+              <ErrorMessage name="信箱" class="invalid-feedback text-start" />
+              </VForm>
             </div>
           </div>
         </div>
@@ -195,3 +213,14 @@
     </div>
   </section>
 </template>
+
+<script>
+export default {
+  methods: {
+    getCoupon() {
+      alert('恭喜獲得酷碰券')
+      this.$refs.couponForm.resetForm()
+    }
+  },
+}
+</script>

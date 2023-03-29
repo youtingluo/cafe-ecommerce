@@ -71,12 +71,12 @@
     >
     </ProductModal>
   <!-- del Modal -->
-  <DelModal :product="tempProduct" @remove-item="removeProduct" ref="delModal"></DelModal>
+  <DeleteModal :product="tempProduct" @remove-item="removeProduct" ref="delModal" />
 </template>
 
 <script>
 import Loading from 'vue-loading-overlay'
-import DelModal from '../../components/DeleteModal.vue'
+import DeleteModal from '../../components/DeleteModal.vue'
 import ProductModal from '../../components/ProductModal.vue'
 import Pagination from '../../components/PaginationComponent.vue'
 import 'vue-loading-overlay/dist/css/index.css'
@@ -94,7 +94,7 @@ export default {
   },
   components: {
     Loading,
-    DelModal,
+    DeleteModal,
     ProductModal,
     Pagination
   },

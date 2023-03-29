@@ -22,7 +22,7 @@ export const cartStore = defineStore('cart', {
           this.isLoading = false
         })
         .catch(err => {
-          console.log(err.response.data.message);
+          alert(err.response.data.message);
           this.isLoading = false
         })
     },
@@ -34,26 +34,23 @@ export const cartStore = defineStore('cart', {
         qty
       }
       axios.post(`${VITE_URL}/v2/api/${VITE_PATH}/cart`, { data })
-        .then((res) => {
-          console.log(res);
+        .then(() => {
           this.getCarts()
           this.state = ''
           this.isLoading = false
         })
         .catch(err => {
-          console.log(err.response.data.message);
+          alert(err.response.data.message);
         })
     },
-    updateCart(id, qty) {
+    updateCart(cart, qty) {
       this.isLoading = true
       const data = {
-        product_id: id,
+        product_id: cart.product_id,
         qty
       }
-      console.log(id, qty);
-      axios.put(`${VITE_URL}/v2/api/${VITE_PATH}/cart/${id}`, { data })
-        .then(res => {
-          console.log(res.data);
+      axios.put(`${VITE_URL}/v2/api/${VITE_PATH}/cart/${cart.id}`, { data })
+        .then(() => {
           this.getCarts()
           this.isLoading = false
         })

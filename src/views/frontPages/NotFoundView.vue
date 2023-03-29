@@ -18,7 +18,7 @@
       <i class="bi bi-emoji-frown-fill text-warning" style="font-size: 5rem"></i>
     </div>
     <div>
-      <router-link class="btn btn-primary d-inline-block" to="/products">回首頁</router-link>
+      <RouterLink class="btn btn-primary d-inline-block" to="/products">回首頁</RouterLink>
     </div>
   </div>
 </template>

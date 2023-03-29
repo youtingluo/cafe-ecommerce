@@ -46,7 +46,7 @@ const router = createRouter({
         },
         {
           path: '/:pathMatch(.*)*',
-          component: () => import('../views/frontPages/NotFuoundView.vue'),
+          component: () => import('../views/frontPages/NotFoundView.vue'),
         },
       ]
     },

@@ -62,13 +62,13 @@
     </div>
   </div>
   <OrderModal ref="orderModal" :order="tempOrder" @update="updateOrder"/>
-  <DelModal ref="delModal" :product="tempOrder" @remove-item="removeOrder"/>
+  <DeleteModal ref="delModal" :product="tempOrder" @remove-item="removeOrder"/>
 </template>
 
 <script>
 import Loading from 'vue-loading-overlay'
 import OrderModal from '../../components/OrderModal.vue'
-import DelModal from '../../components/DeleteModal.vue'
+import DeleteModal from '../../components/DeleteModal.vue'
 import Pagination from '../../components/PaginationComponent.vue'
 import 'vue-loading-overlay/dist/css/index.css'
 const { VITE_URL, VITE_PATH } = import.meta.env
@@ -84,7 +84,7 @@ export default {
   },
   components: {
     OrderModal,
-    DelModal,
+    DeleteModal,
     Pagination,
     Loading
   },

@@ -65,7 +65,7 @@
       ></Pagination>
     </div>
   </div>
-  <DelModal ref="delModal" :product="tempCoupon" @remove-item="removeCoupon"/>
+  <DeleteModal ref="delModal" :product="tempCoupon" @remove-item="removeCoupon"/>
   <CouponModal ref="couponModal" :isNew="isNew"
       :coupon="tempCoupon" @update="updateCoupon"/>
 </template>
@@ -73,7 +73,7 @@
 <script>
 import Loading from 'vue-loading-overlay'
 import CouponModal from '../../components/CouponModal.vue'
-import DelModal from '../../components/DeleteModal.vue'
+import DeleteModal from '../../components/DeleteModal.vue'
 import Pagination from '../../components/PaginationComponent.vue'
 import 'vue-loading-overlay/dist/css/index.css'
 const { VITE_URL, VITE_PATH } = import.meta.env
@@ -90,7 +90,7 @@ export default {
   },
   components: {
     CouponModal,
-    DelModal,
+    DeleteModal,
     Pagination,
     Loading
   },

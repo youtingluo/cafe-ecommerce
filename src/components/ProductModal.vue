@@ -84,6 +84,7 @@
                   "
                 >
                   <button
+                    type="button"
                     class="btn btn-outline-primary btn-sm d-block w-100"
                     @click="$event => tempProduct.imagesUrl.push('')"
                   >

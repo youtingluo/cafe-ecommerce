@@ -17,6 +17,7 @@
     </p>
   </div>
   <div class="container my-3 min-body-heigh">
+    <ProcessBar :isPaid="is_paid" />
     <div class="row">
       <div class="col-md-6 mb-3 mb-md-0">
         <div class="text-dark border border-dark p-3">
@@ -80,6 +81,7 @@
 </template>
 
 <script>
+import ProcessBar from '../../components/ProcessBar.vue'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 import mixin from '../../mixin/thousands_separators'
@@ -97,7 +99,8 @@ export default {
   },
   mixins: [mixin],
   components: {
-    Loading
+    Loading,
+    ProcessBar
   },
   computed: {
     createTime() {
@@ -114,6 +117,7 @@ export default {
         this.create_at = res.data.order.create_at
         this.is_paid = res.data.order.is_paid
         this.total = res.data.order.total
+        console.log(res.data);
       })
     },
     sendOrder() {

@@ -30,10 +30,12 @@ const router = createRouter({
         },
         {
           path: 'cart/:id',
+          name: 'pay',
           component: () => import('../views/frontPages/PayView.vue')
         },
         {
           path: 'order/:id',
+          name: 'confirmPay',
           component: () => import('../views/frontPages/ConfirmPay.vue'),
         },
         {

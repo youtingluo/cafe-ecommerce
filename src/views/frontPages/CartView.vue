@@ -25,6 +25,7 @@
   </div>
 
   <div v-else class="container my-3 my-md-5 min-body-heigh">
+    <ProcessBar></ProcessBar>
     <div class="row">
       <div class="col-md-8">
         <h1 class="bg-secondary p-3 text-center">購物車清單</h1>
@@ -103,13 +104,15 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import Loading from 'vue-loading-overlay'
+import ProcessBar from '../../components/ProcessBar.vue'
 import 'vue-loading-overlay/dist/css/index.css'
 import { cartStore } from '../../stores/cart'
 import mixin from '../../mixin/thousands_separators'
 export default {
   mixins: [mixin],
   components: {
-    Loading
+    Loading,
+    ProcessBar
   },
   methods: {
     ...mapActions(cartStore, ['updateCart', 'getCarts', 'removeCart', 'removeAllCart'])
@@ -119,6 +122,7 @@ export default {
   },
   mounted() {
     this.getCarts()
+    console.log(this.$route);
   }
 }
 </script>

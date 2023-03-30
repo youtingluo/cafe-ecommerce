@@ -17,6 +17,7 @@
     </p>
   </div>
   <div class="container py-4 py-lg-7 min-body-heigh">
+    <ProcessBar></ProcessBar>
     <div class="row">
       <div class="col-md-8 mx-auto">
         <VForm ref="form" class="my-3" v-slot="{ errors }" @submit="onSubmit">
@@ -109,6 +110,7 @@
 </template>
 
 <script>
+import ProcessBar from '../../components/ProcessBar.vue'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 import { mapActions } from 'pinia'
@@ -129,7 +131,8 @@ export default {
     }
   },
   components: {
-    Loading
+    Loading,
+    ProcessBar
   },
   methods: {
     ...mapActions(cartStore, ['getCarts']),

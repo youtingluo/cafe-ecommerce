@@ -24,7 +24,7 @@
             <button
               type="button"
               class="btn btn-outline-primary"
-              @click="() => (selectedCategory = '')"
+              @click="() => $router.push(`/products`)"
               :class="{ 'btn-primary text-white': selectedCategory === '' }"
             >
               全部產品
@@ -34,7 +34,7 @@
               class="btn btn-outline-primary"
               v-for="item in categories"
               :key="item"
-              @click="() => (selectedCategory = item)"
+              @click="() => $router.push(`/products?query=${item}`)"
               :class="{ 'btn-primary text-white': selectedCategory === item }"
             >
               {{ item }}
@@ -54,75 +54,15 @@
       </div>
       <div class="row">
         <template v-if="searchContent">
-          <h3 class="mb-3">以下為您顯示 {{ searchContent }} 的結果
+          <h3 class="mb-3">
+            以下為您顯示 {{ searchContent }} 的結果
             <button class="btn btn-outline-primary btn-sm mt-2" @click="() => getProducts()">
-              <i class="bi bi-x-circle"></i> 取消搜尋</button>
+              <i class="bi bi-x-circle"></i> 取消搜尋
+            </button>
           </h3>
-          
+
           <div v-for="product in searchResult" :key="product.id" class="col-lg-4 col-md-6 mb-3">
-          <RouterLink :class="{'pe-none': state === product.id }" :to="`products/${product.id}`">
-            <div class="card product-card">
-              <div class="card-head">
-                <img
-                  class="card-img-top bg-cover"
-                  height="300"
-                  :src="product.imageUrl"
-                  :title="product.title"
-                />
-              </div>
-              <div class="card-body">
-                <h5 class="card-title">{{ product.title }}</h5>
-                <p class="card-text">
-                  NT$ {{ thousands(product.price) }} /
-                  <small class="text-muted text-decoration-line-through"
-                    >NT$ {{ thousands(product.origin_price) }}</small
-                  >
-                </p>
-                <div class="d-flex justify-content-between">
-                  <button
-                    type="button"
-                    class="btn btn-primary me-auto"
-                    :disabled="state === product.id"
-                    @click.prevent="() => addToCart(product.id)"
-                  >
-                    <span
-                      v-if="state === product.id"
-                      class="spinner-grow text-secondary spinner-grow-sm"
-                    ></span>
-                    加入購物車
-                  </button>
-                  <button
-                    v-if="!isFav(product.id)"
-                    type="button"
-                    class="btn btn-outline-danger"
-                    @click.prevent="() => addToCollect(product)"
-                  >
-                    <i class="bi bi-heart"></i>
-                    加入收藏
-                  </button>
-                  <button
-                    v-else
-                    type="button"
-                    class="btn btn-danger"
-                    @click.prevent="() => removeCollect(product)"
-                  >
-                    <i class="bi bi-heart"></i>
-                    已收藏
-                  </button>
-                </div>
-              </div>
-            </div>
-          </RouterLink>
-          </div>
-          <div v-if="searchResult.length === 0" class="col text-center min-body-heigh">
-            <h2>查無商品</h2>
-            <i class="bi bi-bag-x" style="font-size: 5rem"></i>
-          </div>
-        </template>
-        
-        <template v-else>
-          <div v-for="product in products" :key="product.id" class="col-lg-4 col-md-6 mb-3">
-            <RouterLink :class="{'pe-none': state === product.id }" :to="`products/${product.id}`">
+            <RouterLink :class="{ 'pe-none': state === product.id }" :to="`products/${product.id}`">
               <div class="card product-card">
                 <div class="card-head">
                   <img
@@ -144,7 +84,68 @@
                     <button
                       type="button"
                       class="btn btn-primary me-auto"
-                      
+                      :disabled="state === product.id"
+                      @click.prevent="() => addToCart(product.id)"
+                    >
+                      <span
+                        v-if="state === product.id"
+                        class="spinner-grow text-secondary spinner-grow-sm"
+                      ></span>
+                      加入購物車
+                    </button>
+                    <button
+                      v-if="!isFav(product.id)"
+                      type="button"
+                      class="btn btn-outline-danger"
+                      @click.prevent="() => addToCollect(product)"
+                    >
+                      <i class="bi bi-heart"></i>
+                      加入收藏
+                    </button>
+                    <button
+                      v-else
+                      type="button"
+                      class="btn btn-danger"
+                      @click.prevent="() => removeCollect(product)"
+                    >
+                      <i class="bi bi-heart"></i>
+                      已收藏
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </RouterLink>
+          </div>
+          <div v-if="searchResult.length === 0" class="col text-center min-body-heigh">
+            <h2>查無商品</h2>
+            <i class="bi bi-bag-x" style="font-size: 5rem"></i>
+          </div>
+        </template>
+
+        <template v-else>
+          <div v-for="product in products" :key="product.id" class="col-lg-4 col-md-6 mb-3">
+            <RouterLink :class="{ 'pe-none': state === product.id }" :to="`products/${product.id}`">
+              <div class="card product-card">
+                <div class="card-head">
+                  <img
+                    class="card-img-top bg-cover"
+                    height="300"
+                    :src="product.imageUrl"
+                    :title="product.title"
+                  />
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{ product.title }}</h5>
+                  <p class="card-text">
+                    NT$ {{ thousands(product.price) }} /
+                    <small class="text-muted text-decoration-line-through"
+                      >NT$ {{ thousands(product.origin_price) }}</small
+                    >
+                  </p>
+                  <div class="d-flex justify-content-between">
+                    <button
+                      type="button"
+                      class="btn btn-primary me-auto"
                       @click.prevent="() => addToCart(product.id)"
                     >
                       <span
@@ -209,11 +210,12 @@ export default {
   },
   mixins: [mixin],
   watch: {
-    selectedCategory() {
+    $route() {
+      this.selectedCategory = this.$route.query.query || ''
       this.getProducts()
     },
     searchContent(o) {
-      if(!o) {
+      if (!o) {
         this.getProducts()
       }
     }
@@ -267,18 +269,19 @@ export default {
       }
     },
     searchResult() {
-      return this.allProducts.filter(item => {
-        const regex = new RegExp(this.searchContent.split('').join('.*'), 'i');
+      return this.allProducts.filter((item) => {
+        const regex = new RegExp(this.searchContent.split('').join('.*'), 'i')
         return regex.test(item.description) || regex.test(item.title)
-      });
+      })
     },
     ...mapState(cartStore, ['state']),
     ...mapState(collectStore, ['collects'])
   },
   mounted() {
     this.getCollects()
-    this.getProducts()
     this.getCategory()
+    this.selectedCategory = this.$route.query.query || ''
+    this.getProducts()
   }
 }
 </script>

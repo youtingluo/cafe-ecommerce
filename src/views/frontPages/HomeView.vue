@@ -150,29 +150,36 @@
       <h2 class="fs-7 text-center waterfall">Shopping</h2>
       <h2 class="h5 text-center kiwi mb-6">購物</h2>
       <div class="row">
+        
         <div class="col-md-4 position-relative mb-md-0 mb-3">
+          <RouterLink to="/products?query=咖啡豆">
           <div
             class="writing-vertical text-white px-2 py-4 align-middle kiwi letter-space position-absolute top-0 ms-3"
           >
             <span class="h3">聞香而來</span><span class="align-text-bottom">—</span> 咖啡豆系列
           </div>
           <img class="img-fluid" src="@/assets/image/shopping1.png" alt="鐵製的咖啡匙裝個滿滿咖啡豆" />
+        </RouterLink>
         </div>
         <div class="col-md-4 position-relative mb-md-0 mb-3">
+          <RouterLink to="/products?query=咖啡杯">
           <div
             class="writing-vertical text-white px-2 py-4 align-middle kiwi letter-space position-absolute top-0 ms-3"
           >
             <span class="h3">視覺饗宴</span><span class="align-text-bottom">—</span> 咖啡杯系列
           </div>
           <img class="img-fluid" src="@/assets/image/shopping2.png" alt="一杯冒著熱氣的熱拿鐵" />
+        </RouterLink>
         </div>
         <div class="col-md-4 position-relative mb-md-0 mb-3">
+          <RouterLink to="/products?query=咖啡用具">
           <div
             class="writing-vertical text-white px-2 py-4 align-middle kiwi letter-space position-absolute top-0 ms-3"
           >
             <span class="h3">大師養成</span><span class="align-text-bottom">—</span> 咖啡用具系列
           </div>
           <img class="img-fluid" src="@/assets/image/shopping3.png" alt="正在濾泡中的咖啡慢慢滴入咖啡壺中" />
+        </RouterLink>
         </div>
       </div>
     </div>
@@ -221,6 +228,6 @@ export default {
       alert('恭喜獲得酷碰券')
       this.$refs.couponForm.resetForm()
     }
-  },
+  }
 }
 </script>

@@ -17,6 +17,7 @@
               <router-link class="nav-link" to="/">回前台</router-link>
             </li>
           </ul>
+          <button type="button" class="btn btn-light ms-auto" @click="() => logOut()">登出</button>
         </div>
       </div>
     </nav>
@@ -27,6 +28,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 const { VITE_URL } = import.meta.env
 export default {
   data() {
@@ -50,7 +52,25 @@ export default {
           }
         })
         .catch((err) => {
-          alert(err.response.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
+          this.$router.push('/login')
+        })
+    },
+    logOut() {
+      this.$http.post(`${VITE_URL}/v2/logout`)
+        .then(() => {
+          this.$router.push('/')
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
           this.$router.push('/login')
         })
     }

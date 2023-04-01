@@ -122,7 +122,6 @@ export default {
   },
   mounted() {
     this.getCarts()
-    console.log(this.$route);
   }
 }
 </script>

@@ -81,6 +81,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 import ProcessBar from '../../components/ProcessBar.vue'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
@@ -111,13 +112,22 @@ export default {
   methods: {
     getOrder() {
       const { id } = this.$route.params
+      this.isLoading = true
       this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/order/${id}`).then((res) => {
         this.products = res.data.order.products
         this.user = res.data.order.user
         this.create_at = res.data.order.create_at
         this.is_paid = res.data.order.is_paid
         this.total = res.data.order.total
-        console.log(res.data);
+        this.isLoading = false
+      })
+      .catch((err) => {
+        this.isLoading = false
+        Swal.fire({
+          icon: 'error',
+          title: '請重試一次',
+          text: err.response.data.message,
+        })
       })
     },
     sendOrder() {
@@ -126,10 +136,19 @@ export default {
       this.$http.post(`${VITE_URL}/v2/api/${VITE_PATH}/pay/${id}`).then(() => {
         this.isLoading = false
         this.getOrder()
+        Swal.fire({
+          icon: 'success',
+          title: '付款成功!',
+          text: 'Cafe beat 感謝您的支持與喜愛！',
+        })
       })
       .catch((err) => {
         this.isLoading = false
-        alert(err.response.data.message)
+        Swal.fire({
+          icon: 'error',
+          title: '請重試一次',
+          text: err.response.data.message,
+        })
       })
     }
   },

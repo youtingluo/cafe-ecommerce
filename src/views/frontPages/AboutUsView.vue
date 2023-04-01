@@ -71,6 +71,8 @@
             製作出最具台灣味的咖啡<br />
             讓你的每一口都有台灣的元素<br />
           </span>
+          <RouterLink class="btn btn-outline-dark mt-2" to="/products">探索商品
+          </RouterLink>
         </p>
       </div>
     </div>

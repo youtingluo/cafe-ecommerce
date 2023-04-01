@@ -9,7 +9,9 @@
       <img class="position-absolute d-block d-lg-none" src="@/assets/image/text-mobile.png" alt="讓咖啡與芬芳豐富你的每一天" />
       <div class="d-flex flex-column justify-content-end align-items-center">
         <h1 class="mb-9 text-dark waterfall">Cafe beat</h1>
-        <button type="button" class="btn btn-outline-dark">探索商品</button>
+        <button type="button" class="btn btn-outline-dark"
+          @click="() => $router.push('/products')">探索商品
+        </button>
       </div>
     </div>
   </div>
@@ -191,8 +193,8 @@
       <div class="row justify-content-center">
         <div class="col-lg-6">
           <div class="bg-primaryone py-7 coupon text-center">
-            <div class="h5">獲得優惠</div>
-            <div class="h6 text-primaryfour">不定期分享咖啡知識與限定優惠</div>
+            <div class="h5 mb-3">獲取電子報</div>
+            <div class="h4 text-danger">註冊即刻獲得 9 折優惠券</div>
             <div class="px-2">
               <VForm ref="couponForm"
                 class="input-group mx-auto mt-4 coupon-form" v-slot="{ errors }"
@@ -222,10 +224,38 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 export default {
   methods: {
+    copy(text) {
+      navigator.clipboard.writeText(text)
+      .then(() => {
+        Swal.fire({
+          toast: true,
+          icon: 'success',
+          title: `已複製優惠碼 ${text}`,
+          showCloseButton: true,
+          showConfirmButton: false,
+          position: 'top-end',
+          timer: 4000,
+        })
+      })
+      console.log(text);
+    },
     getCoupon() {
-      alert('恭喜獲得酷碰券')
+      Swal.fire({
+        icon: 'info',
+        title: '恭喜獲得優惠券',
+        color: 'red',
+        confirmButtonText: '複製',
+        text: 'code55688',
+      }).then((result) => {
+        if(result.isConfirmed) {
+          const text = Swal.getHtmlContainer().textContent
+          const btn = Swal.getConfirmButton()
+          btn.addEventListener('click', this.copy(text))
+        }
+      })
       this.$refs.couponForm.resetForm()
     }
   }

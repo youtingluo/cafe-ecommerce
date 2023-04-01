@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import axios from 'axios';
+import Swal from 'sweetalert2'
 const { VITE_URL, VITE_PATH } = import.meta.env;
 export const cartStore = defineStore('cart', {
   state: () => {
@@ -22,7 +23,11 @@ export const cartStore = defineStore('cart', {
           this.isLoading = false
         })
         .catch(err => {
-          alert(err.response.data.message);
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
           this.isLoading = false
         })
     },
@@ -38,9 +43,23 @@ export const cartStore = defineStore('cart', {
           this.getCarts()
           this.state = ''
           this.isLoading = false
+          Swal.fire({
+            position: 'top',
+            title: '已加入購物車',
+            icon: 'success',
+            timer: 2500,
+            toast: true,
+            showConfirmButton: false,
+            timerProgressBar: true
+          })
         })
-        .catch(err => {
-          alert(err.response.data.message);
+        .catch((err) => {
+          this.state = ''
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
         })
     },
     updateCart(cart, qty) {
@@ -53,6 +72,23 @@ export const cartStore = defineStore('cart', {
         .then(() => {
           this.getCarts()
           this.isLoading = false
+          Swal.fire({
+            position: 'top',
+            title: '已更新購物車',
+            icon: 'success',
+            timer: 1500,
+            toast: true,
+            showConfirmButton: false,
+            showCloseButton: true,
+          })
+        })
+        .catch((err) => {
+          this.state = ''
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
         })
     },
     removeCart(id) {
@@ -61,6 +97,23 @@ export const cartStore = defineStore('cart', {
         .then(() => {
           this.state = ''
           this.getCarts()
+          Swal.fire({
+            position: 'top',
+            title: '已刪除產品',
+            icon: 'success',
+            timer: 1500,
+            toast: true,
+            showConfirmButton: false,
+            showCloseButton: true,
+          })
+        })
+        .catch((err) => {
+          this.state = ''
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
         })
     },
     removeAllCart() {
@@ -69,6 +122,14 @@ export const cartStore = defineStore('cart', {
         .then(() => {
           this.getCarts()
           this.isLoading = false
+        })
+        .catch((err) => {
+          this.state = ''
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
         })
     }
   }

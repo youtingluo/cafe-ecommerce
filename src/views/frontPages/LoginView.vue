@@ -14,7 +14,6 @@
               v-model="user.username"
               id="floatingInput"
               placeholder="name@example.com"
-              required
               autofocus
             />
             <ErrorMessage name="帳號" class="invalid-feedback" />

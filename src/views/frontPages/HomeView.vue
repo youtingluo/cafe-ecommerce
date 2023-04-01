@@ -207,8 +207,6 @@
                 rules="required|email"
                 id="floatingInput"
                 placeholder="name@example.com"
-                required
-                autofocus
               />
               <button type="submit" class="btn btn-light border border-1 rounded-1 text-primary">
                 送出

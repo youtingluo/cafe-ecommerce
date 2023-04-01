@@ -60,19 +60,49 @@
               <span v-if="state === cart.id" class="spinner-border spinner-border-sm"></span>
               <i v-else class="bi bi-x-circle"></i>
             </button>
-            <p class="mb-0 fw-bold">NT$ {{ thousands(cart.final_total) }}</p>
+            <div class="text-end">
+              <small v-if="cart.coupon" class="fw-bold text-primary text-decoration-line-through">
+                NT$ {{ thousands(Math.round(cart.total)) }}
+              </small>
+              <p class="mb-0 fw-bold">NT$ {{ thousands(Math.round(cart.final_total)) }}</p>
+              <small v-if="cart.coupon" class="text-success">
+                {{ message }}
+              </small>
+            </div>
           </div>
         </div>
-        <div class="d-flex justify-content-end my-3">
-          <button
-            type="button"
-            class="btn btn-outline-danger"
-            :disabled="isLoading"
-            @click="() => removeAllCart()"
-          >
-            <span v-if="isLoading" class="spinner-border spinner-border-sm"></span>
-            清除購物車
-          </button>
+        <div class="row justify-content-between my-3">
+          <div class="col-md-6">
+            <VForm class="input-group" v-slot="{ errors }" @submit="() => useCoupon(code)">
+              <VField
+                name="優惠券"
+                type="text"
+                class="form-control"
+                :class="{ 'is-invalid': errors['優惠券'] }"
+                placeholder="輸入優惠碼"
+                v-model="code"
+                rules="required"
+              ></VField>
+              <button type="submit" class="btn btn-success" :disabled="isLoading">
+                <span v-if="isLoading" class="spinner-border spinner-border-sm"></span>
+                套用優惠券
+              </button>
+              <ErrorMessage name="優惠券" class="invalid-feedback" />
+            </VForm>
+          </div>
+          <div class="col-md-6">
+            <div class="d-flex justify-content-end">
+              <button
+                type="button"
+                class="btn btn-outline-danger"
+                :disabled="isLoading"
+                @click="() => removeAllCart()"
+              >
+                <span v-if="isLoading" class="spinner-border spinner-border-sm"></span>
+                清除購物車
+              </button>
+            </div>
+          </div>
         </div>
       </div>
       <div class="col-md-4 mt-4 mt-md-0">
@@ -88,12 +118,15 @@
           </div>
           <div class="d-flex justify-content-between align-items-end mb-2">
             <p class="fs-3">總計：</p>
-            <p class="fw-bold text-danger">NT$ {{ thousands(final_total) }}</p>
+            <div class="text-end">
+              <small v-if="message" class="fw-bold text-primary mb-0 text-decoration-line-through">
+                NT$ {{ thousands(Math.round(total)) }}
+              </small>
+              <p class="fw-bold text-danger">NT$ {{ thousands(Math.round(final_total)) }}</p>
+            </div>
           </div>
         </div>
-        <RouterLink
-          :to="`cart/${carts[0].id}`"
-          class="btn btn-dark btn-lg rounded-0 w-100"
+        <RouterLink :to="`cart/${carts[0].id}`" class="btn btn-dark btn-lg rounded-0 w-100"
           >結帳
         </RouterLink>
       </div>
@@ -109,16 +142,21 @@ import 'vue-loading-overlay/dist/css/index.css'
 import { cartStore } from '../../stores/cart'
 import mixin from '../../mixin/thousands_separators'
 export default {
+  data() {
+    return {
+      code: ''
+    }
+  },
   mixins: [mixin],
   components: {
     Loading,
     ProcessBar
   },
   methods: {
-    ...mapActions(cartStore, ['updateCart', 'getCarts', 'removeCart', 'removeAllCart'])
+    ...mapActions(cartStore, ['updateCart', 'getCarts', 'removeCart', 'removeAllCart', 'useCoupon'])
   },
   computed: {
-    ...mapState(cartStore, ['carts', 'isLoading', 'final_total', 'state'])
+    ...mapState(cartStore, ['carts', 'isLoading', 'final_total', 'state', 'message', 'total'])
   },
   mounted() {
     this.getCarts()

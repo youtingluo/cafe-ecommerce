@@ -248,7 +248,7 @@ export default {
         title: '恭喜獲得優惠券',
         color: 'red',
         confirmButtonText: '複製',
-        text: 'code55688',
+        text: 'cafe90',
       }).then((result) => {
         if(result.isConfirmed) {
           const text = Swal.getHtmlContainer().textContent

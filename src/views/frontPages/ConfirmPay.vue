@@ -42,13 +42,13 @@
             <div class="d-flex flex-column">
               <p class="text-end border-bottom pb-3" v-for="item in products" :key="item.id">
                 {{ item.product.title }} x {{ item.qty }} <br />
-                <small class="text-muted">NT$ {{ thousands(item.final_total) }}</small>
+                <small class="text-muted">NT$ {{ thousands(Math.round(item.final_total)) }}</small>
               </p>
             </div>
           </div>
           <div class="d-flex justify-content-between align-items-end mb-2">
             <p>總計：</p>
-            <p class="fw-bold text-danger">NT$ {{ thousands(total) }}</p>
+            <p class="fw-bold text-danger">NT$ {{ thousands(Math.round(total)) }}</p>
           </div>
           <div class="d-flex justify-content-between align-items-end mb-2">
             <p>付款狀態：</p>
@@ -114,6 +114,7 @@ export default {
       const { id } = this.$route.params
       this.isLoading = true
       this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/order/${id}`).then((res) => {
+        console.log(res.data);
         this.products = res.data.order.products
         this.user = res.data.order.user
         this.create_at = res.data.order.create_at

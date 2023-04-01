@@ -72,7 +72,7 @@
                   <button
                     type="button"
                     class="btn btn-outline-danger d-block w-100 mt-1"
-                    @click="$event => tempProduct.imagesUrl.splice(key, 1)"
+                    @click="() => tempProduct.imagesUrl.splice(key, 1)"
                   >
                     移除
                   </button>
@@ -86,7 +86,7 @@
                   <button
                     type="button"
                     class="btn btn-outline-primary btn-sm d-block w-100"
-                    @click="$event => tempProduct.imagesUrl.push('')"
+                    @click="() => tempProduct.imagesUrl.push('')"
                   >
                     新增圖片
                   </button>

@@ -114,7 +114,6 @@ export default {
       const { id } = this.$route.params
       this.isLoading = true
       this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/order/${id}`).then((res) => {
-        console.log(res.data);
         this.products = res.data.order.products
         this.user = res.data.order.user
         this.create_at = res.data.order.create_at

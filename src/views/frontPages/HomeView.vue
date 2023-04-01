@@ -240,7 +240,6 @@ export default {
           timer: 4000,
         })
       })
-      console.log(text);
     },
     getCoupon() {
       Swal.fire({

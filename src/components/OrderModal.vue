@@ -130,7 +130,7 @@
           <button
             type="button"
             class="btn btn-primary"
-            @click="$emit('update', tempOrder)"
+            @click="() => $emit('update', tempOrder)"
           >
             修改付款狀態
           </button>

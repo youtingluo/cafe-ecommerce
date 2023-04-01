@@ -22,7 +22,6 @@ export const cartStore = defineStore('cart', {
           this.final_total = res.data.data.final_total
           this.total = res.data.data.total
           this.isLoading = false
-          console.log('cart:', res.data);
         })
         .catch(err => {
           Swal.fire({
@@ -142,7 +141,6 @@ export const cartStore = defineStore('cart', {
       }
       axios.post(`${VITE_URL}/v2/api/${VITE_PATH}/coupon`, { data })
         .then((res) => {
-          console.log(res.data);
           this.final_total = res.data.data.final_total
           this.message = res.data.message
           this.getCarts()

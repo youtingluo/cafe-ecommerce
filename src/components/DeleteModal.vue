@@ -46,7 +46,6 @@ export default {
   },
   mounted () {
     this.modal = new Modal(this.$refs.modal)
-    console.log(this.product);
   }
 }
 </script>

@@ -23,7 +23,7 @@
       </div>
       <div class="col-md-6">
         <div class="subtitle text-center text-primarythree mb-3">ABOUT</div>
-        <p class="text-center about-content">
+        <p class="text-center about-content" data-aos="fade-left" data-aos-offset="200">
           <span>
             堅持用最高品質來對待每一顆咖啡豆<br />
             我們相信<br />
@@ -39,9 +39,9 @@
     </div>
     <div class="row mb-7">
       <div class="col-md-6 order-2 order-md-1">
-        <div class="subtitle text-center text-primarythree mb-3">BRAND</div>
-        <p class="text-center">希望您在品嚐 Cafe beat 的咖啡時</p>
-        <p class="text-center">你可以感受到咖啡的香氣、滋味、溫度和情感。</p>
+        <div class="subtitle text-center text-primarythree mb-3" data-aos="fade-left">BRAND</div>
+        <p class="text-center" data-aos="fade-left">希望您在品嚐 Cafe beat 的咖啡時</p>
+        <p class="text-center" data-aos="fade-left">你可以感受到咖啡的香氣、滋味、溫度和情感。</p>
       </div>
       <div class="col-md-6 mb-7 order-1 order-md-2">
         <div class="position-relative about-outline">
@@ -64,8 +64,8 @@
         </div>
       </div>
       <div class="col-md-6">
-        <div class="subtitle text-center text-primarythree mb-3">LOCAL</div>
-        <p class="text-center about-content">
+        <div class="subtitle text-center text-primarythree mb-3" data-aos="fade-left">LOCAL</div>
+        <p class="text-center about-content" data-aos="fade-left">
           <span>
             我們也大量使用在地咖啡豆<br />
             製作出最具台灣味的咖啡<br />
@@ -79,6 +79,17 @@
   </div>
 </template>
 
+<script>
+import AOS from 'aos'
+import 'aos/dist/aos.css'
+export default {
+  mounted() {
+    AOS.init({
+      offset: 120
+    })
+  }
+}
+</script>
 <style lang="scss">
 @import '../../assets/mixin';
 .subtitle {

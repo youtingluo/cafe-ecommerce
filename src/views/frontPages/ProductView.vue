@@ -169,13 +169,16 @@
       </div>
       <h3 class="h2 text-center">相關產品</h3>
       <!-- swiper -->
-      <swiper-container
-        class="row pb-3 my-3"
-        :breakpoints="{ 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }"
+      <Swiper
+        class="my-3 pb-3" :space-between="20"
+        :breakpoints="
+        { 320: { slidesPerView: 1, spaceBetween: 10} ,
+          768: { slidesPerView: 2, spaceBetween: 20 }, 
+          1024: { slidesPerView: 3 } }"
         :scrollbar="{ draggable: true }"
       >
-        <swiper-slide class="col-4" v-for="item in products" :key="item.id">
-          <router-link :class="{'pe-none': state === item.id }" :to="`/products/${item.id}`">
+        <SwiperSlide v-for="item in products" :key="item.id">
+          <RouterLink :class="{'pe-none': state === item.id }" :to="`/products/${item.id}`">
             <div class="card product-card">
               <div class="card-head">
                 <img
@@ -227,17 +230,21 @@
                 </div>
               </div>
             </div>
-          </router-link>
-        </swiper-slide>
-      </swiper-container>
+          </RouterLink>
+        </SwiperSlide>
+      </Swiper>
     </div>
   </div>
 </template>
 
 <script>
+import { Swiper, SwiperSlide } from 'swiper/vue';
+import 'swiper/css';
+import 'swiper/css/scrollbar';
 import { mapActions, mapState } from 'pinia'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
+import Swal from 'sweetalert2'
 import { cartStore } from '../../stores/cart'
 import { register } from 'swiper/element/bundle'
 import { collectStore } from '../../stores/collect'
@@ -258,7 +265,9 @@ export default {
   },
   mixins: [mixin],
   components: {
-    Loading
+    Loading,
+    Swiper,
+    SwiperSlide
   },
   watch: {
     $route() {
@@ -285,22 +294,30 @@ export default {
         .then((res) => {
           this.category = res.data.product.category
           this.product = res.data.product
-          this.isLoading = false
           this.getProducts()
+          this.isLoading = false
         })
         .catch((err) => {
-          alert(err.response.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
           this.isLoading = false
-          this.$router.push('/products')
         })
     },
     getProducts() {
       this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/products?category=${this.category}`)
         .then((res) => {
-          this.products = res.data.products
+          const filterProducts = res.data.products.filter(item => item.id !== this.product.id)
+          this.products = filterProducts
         })
         .catch((err) => {
-          alert(err.response.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
         })
     }
   },

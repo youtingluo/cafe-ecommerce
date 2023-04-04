@@ -25,19 +25,19 @@
   <section class="pb-md-9 pt-md-7 py-4 py-md-0">
     <div class="container">
       <div class="row align-items-center g-0">
-        <div class="col-md-6 mb-3 mb-md-0">
+        <div class="col-md-6 mb-3 mb-md-0" data-aos="fade-up">
           <img class="img-fluid bg-cover" src="@/assets/image/explore1.png" alt="一杯咖啡擺放在白色桌上與陽光照射下" />
         </div>
-        <div class="col-md-6 mb-3 mb-md-0">
+        <div class="col-md-6 mb-3 mb-md-0" data-aos="fade-up">
           <p class="h5 text-center mb-3 kiwi">繁忙工作中 治癒疲憊身心的飲品</p>
           <p class="h5 text-center kiwi">日常生活中 體驗多變精彩的人生</p>
         </div>
       </div>
       <div class="row align-items-center g-0">
-        <div class="col-md-6 order-md-2 mb-3 mb-md-0">
+        <div class="col-md-6 order-md-2 mb-3 mb-md-0" data-aos="fade-up">
           <img class="img-fluid bg-cover order-md-1" src="@/assets/image/explore2.png" alt="三杯由淺色致深色的咖啡" />
         </div>
-        <div class="col-md-6 order-md-1">
+        <div class="col-md-6 order-md-1" data-aos="fade-up">
           <div class="text-center">
             <p class="h6 text-center mb-3 kiwi">尋找屬於你的味道</p>
             <RouterLink
@@ -57,7 +57,7 @@
     <div class="container">
       <h2 class="fs-7 text-center waterfall">Knowledge</h2>
       <h2 class="h5 text-center kiwi mb-6">知識</h2>
-      <div class="row align-items-end mb-3 mb-lg-7">
+      <div class="row align-items-end mb-3 mb-lg-7" data-aos="fade-right">
         <div class="col-lg-6 offset-lg-2 position-relative">
           <div
             class="bg-white bg-opacity-90 writing-vertical px-2 py-4 kiwi letter-space position-absolute top-0 ms-3"
@@ -77,7 +77,7 @@
         </div>
       </div>
 
-      <div class="row align-items-end mb-3 mb-lg-7">
+      <div class="row align-items-end mb-3 mb-lg-7" data-aos="fade-left">
         <div class="col-lg-6 offset-lg-2 position-relative">
           <div
             class="bg-white bg-opacity-90 writing-vertical px-2 py-4 kiwi letter-space position-absolute top-0 ms-3"
@@ -97,7 +97,7 @@
         </div>
       </div>
 
-      <div class="row align-items-end mb-3">
+      <div class="row align-items-end mb-3" data-aos="fade-right">
         <div class="col-lg-6 offset-lg-2 position-relative">
           <div
             class="bg-white bg-opacity-90 writing-vertical px-2 py-4 kiwi letter-space position-absolute top-0 ms-3"
@@ -123,7 +123,7 @@
     <div class="container">
       <h2 class="fs-7 text-center waterfall">Promise</h2>
       <h2 class="h5 text-center kiwi mb-6">堅持</h2>
-      <div class="row justify-content-center">
+      <div class="row justify-content-center" data-aos="flip-up">
         <div class="col-md-4 d-flex justify-content-center align-items-center position-relative">
           <img class="filter img-fluid" src="@/assets/image/promise1.png" alt="樹上長著一串咖啡豆" />
           <div class="position-absolute">
@@ -151,8 +151,7 @@
     <div class="container">
       <h2 class="fs-7 text-center waterfall">Shopping</h2>
       <h2 class="h5 text-center kiwi mb-6">購物</h2>
-      <div class="row">
-        
+      <div class="row" data-aos="flip-up">
         <div class="col-md-4 position-relative mb-md-0 mb-3">
           <RouterLink to="/products?query=咖啡豆">
           <div
@@ -163,7 +162,7 @@
           <img class="img-fluid" src="@/assets/image/shopping1.png" alt="鐵製的咖啡匙裝個滿滿咖啡豆" />
         </RouterLink>
         </div>
-        <div class="col-md-4 position-relative mb-md-0 mb-3">
+        <div class="col-md-4 position-relative mb-md-0 mb-3" data-aos="fade-up">
           <RouterLink to="/products?query=咖啡杯">
           <div
             class="writing-vertical text-white px-2 py-4 align-middle kiwi letter-space position-absolute top-0 ms-3"
@@ -223,6 +222,8 @@
 
 <script>
 import Swal from 'sweetalert2'
+import AOS from 'aos'
+import 'aos/dist/aos.css'
 export default {
   methods: {
     copy(text) {
@@ -255,6 +256,11 @@ export default {
       })
       this.$refs.couponForm.resetForm()
     }
+  },
+  mounted() {
+    AOS.init({
+      offset: 120
+    })
   }
 }
 </script>

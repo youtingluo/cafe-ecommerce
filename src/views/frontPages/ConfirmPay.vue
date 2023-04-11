@@ -59,21 +59,12 @@
           </div>
         </div>
         <button
-          v-if="!is_paid"
           type="button"
           class="btn btn-primary w-100 rounded-0"
           :disabled="isLoading"
           @click="() => sendOrder()"
         >
           確認付款
-        </button>
-        <button
-          v-else
-          type="button"
-          class="btn btn-primary w-100 rounded-0"
-          @click="() => $router.push('/products')"
-        >
-          繼續購物
         </button>
       </div>
     </div>

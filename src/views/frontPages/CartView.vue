@@ -41,14 +41,25 @@
           <div class="d-flex flex-column align-items-start justify-content-between">
             <h3 class="h5 text-nowrap me-md-3">{{ cart.product.title }}</h3>
             <span>NT$ {{ cart.product.price }}</span>
-            <select
-              class="form-select form-select-sm mt-2 selectQty"
-              :disabled="state === cart.id"
-              v-model="cart.qty"
-              @change="() => updateCart(cart, cart.qty)"
-            >
-              <option selected :value="i" v-for="i in 10" :key="`${i}5235`">{{ i }}</option>
-            </select>
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button
+                type="button"
+                class="btn btn-primary"
+                :disabled="state === cart.id"
+                @click="() => updateCart(cart, cart.qty - 1)"
+              >
+                -
+              </button>
+              <input type="text" class="text-center" :value="cart.qty" readonly />
+              <button
+                type="button"
+                class="btn btn-primary"
+                :disabled="state === cart.id"
+                @click="() => updateCart(cart, cart.qty + 1)"
+              >
+                +
+              </button>
+            </div>
           </div>
           <div class="d-flex flex-column justify-content-between align-items-end ms-auto">
             <button

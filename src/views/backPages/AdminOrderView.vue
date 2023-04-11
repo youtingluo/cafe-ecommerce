@@ -58,7 +58,7 @@
       <Pagination
         :pagination="pagination"
         @emit-page="getOrder"
-      ></Pagination>
+      />
     </div>
   </div>
   <OrderModal ref="orderModal" :order="tempOrder" @update="updateOrder"/>

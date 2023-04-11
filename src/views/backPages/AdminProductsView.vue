@@ -58,7 +58,7 @@
       <Pagination
         :pagination="pagination"
         @emit-page="getProducts"
-      ></Pagination>
+      />
     </div>
   </div>
 
@@ -68,8 +68,7 @@
       :product="tempProduct"
       @update="updateProduct"
       ref="productModal"
-    >
-    </ProductModal>
+    />
   <!-- del Modal -->
   <DeleteModal :product="tempProduct" @remove-item="removeProduct" ref="delModal" />
 </template>

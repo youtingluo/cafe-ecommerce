@@ -9,7 +9,8 @@
     <div class="position-relative">
       <img
         class="top-50 imgset bg-mask"
-        src="https://storage.googleapis.com/vue-course-api.appspot.com/youting/1679368088772.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=gkPGxdJV09tlG7eTyLkc3UlmhEM8fwVRUM%2BGt885Sz2ZHBfJU132NUGaF0phyjiGlaFHaCl1Hi4btvrI5848F5v5eRFi5LjyN4wJbKpa9%2FzD8tMlwU13ZC4hN4EL5XpFGwLHSa9sDfPWh9UySEWyZvoXbM98yXi6RgGKGbPMTYr%2FWOJbm46bzCkgwyU3xCMmWkrhqzmaxeA1l900dRYxpeaHvcANukTdsBdyC0d4QBIDJusZohHbJE0E8tjAInbDsYx466vGO4Buyg4qD8irn78jjYeOaTzQiCOBgWOL0GZPjiUI6I1fO3cvObMiloDB1QhWYwViuR652egoDOuR6g%3D%3D" alt="banner圖片，為一杯咖啡"
+        src="https://storage.googleapis.com/vue-course-api.appspot.com/youting/1679368088772.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=gkPGxdJV09tlG7eTyLkc3UlmhEM8fwVRUM%2BGt885Sz2ZHBfJU132NUGaF0phyjiGlaFHaCl1Hi4btvrI5848F5v5eRFi5LjyN4wJbKpa9%2FzD8tMlwU13ZC4hN4EL5XpFGwLHSa9sDfPWh9UySEWyZvoXbM98yXi6RgGKGbPMTYr%2FWOJbm46bzCkgwyU3xCMmWkrhqzmaxeA1l900dRYxpeaHvcANukTdsBdyC0d4QBIDJusZohHbJE0E8tjAInbDsYx466vGO4Buyg4qD8irn78jjYeOaTzQiCOBgWOL0GZPjiUI6I1fO3cvObMiloDB1QhWYwViuR652egoDOuR6g%3D%3D"
+        alt="banner圖片，為一杯咖啡"
       />
       <p
         class="position-absolute top-50 start-50 p-2 bg-dark bg-opacity-50 translate-middle fs-1 text-white border-bottom border-4 border-light"
@@ -20,11 +21,7 @@
     <div class="container">
       <div class="row py-3 py-lg-7">
         <div class="col-md-6">
-          <img
-            class="product-img bg-cover"
-            :src="product.imageUrl"
-            :title="product.title"
-          />
+          <img class="product-img bg-cover" :src="product.imageUrl" :title="product.title" />
         </div>
         <div class="col-md-6">
           <div class="d-flex flex-column justify-content-between h-100">
@@ -69,29 +66,52 @@
                 </div>
                 <div class="col-md-3">
                   <button
-                      v-if="!isFav(product.id)"
-                      type="button"
-                      class="btn btn-sm rounded btn-outline-primary"
-                      @click.prevent="() => addToCollect(product)"
-                    >
-                      <i class="bi bi-heart"></i>
-                      加入收藏
-                    </button>
-                    <button
-                      v-else
-                      type="button"
-                      class="btn btn-outline-primary"
-                      @click.prevent="() => removeCollect(product)"
-                    >
-                      <i class="bi bi-heart-fill text-danger"></i>
-                    </button>
+                    v-if="!isFav(product.id)"
+                    type="button"
+                    class="btn btn-sm rounded btn-outline-primary"
+                    @click.prevent="() => addToCollect(product)"
+                  >
+                    <i class="bi bi-heart"></i>
+                    加入收藏
+                  </button>
+                  <button
+                    v-else
+                    type="button"
+                    class="btn btn-outline-primary"
+                    @click.prevent="() => removeCollect(product)"
+                  >
+                    <i class="bi bi-heart-fill text-danger"></i>
+                  </button>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
+      <div>
+        <div class="card card-body">
+          <p>【付款方式】 ATM轉帳 只要將購買款項直接匯入系統指定帳號即可完成付款。</p>
+          <p>
+            【配送相關】 發送時間：完成訂單確認後1～5個工作天內出貨。
+            恕不指定到貨日及時間，以物流配送為主。
+          </p>
+          <p>並請所有消費者注意以下事項</p>
+          <ol>
+            <li>
+              不良品退還經過檢查與測試之後，若發現商品本身並無瑕疵，消費者必須支付所有發生之相關費用。
+            </li>
+            <li>
+              在您收到貨品後如因非人為因素之商品損毀、刮傷、或運輸過程造成包裝破損不完整者<br />
+              請您儘速通知本公司客服人員，我們會進行商品瑕疵或損壞鑑定，並儘速將新品寄給您。
+            </li>
+            <li>
+              若商品因消費者個人不當使用拆卸產生人為因素造成故障、損毀、磨損、擦傷、刮傷、髒污、包裝破損不完<br />
+              整者，或是發票、附配件不齊者，恕不接受退貨。
+            </li>
+            <li>以上為網路購物基本規則，下單視已閱讀並了解同意。 感謝您！</li>
+          </ol>
+        </div>
+      </div>
       <ul class="nav nav-tabs mt-3" id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
           <button
@@ -170,15 +190,17 @@
       <h3 class="h2 text-center">相關產品</h3>
       <!-- swiper -->
       <Swiper
-        class="my-3 pb-3" :space-between="20"
-        :breakpoints="
-        { 320: { slidesPerView: 1, spaceBetween: 10} ,
-          768: { slidesPerView: 2, spaceBetween: 20 }, 
-          1024: { slidesPerView: 3 } }"
+        class="my-3 pb-3"
+        :space-between="20"
+        :breakpoints="{
+          320: { slidesPerView: 1, spaceBetween: 10 },
+          768: { slidesPerView: 2, spaceBetween: 20 },
+          1024: { slidesPerView: 3 }
+        }"
         :scrollbar="{ draggable: true }"
       >
         <SwiperSlide v-for="item in products" :key="item.id">
-          <RouterLink :class="{'pe-none': state === item.id }" :to="`/products/${item.id}`">
+          <RouterLink :class="{ 'pe-none': state === item.id }" :to="`/products/${item.id}`">
             <div class="card product-card">
               <div class="card-head">
                 <img
@@ -210,22 +232,22 @@
                     加入購物車
                   </button>
                   <button
-                      v-if="!isFav(product.id)"
-                      type="button"
-                      class="btn btn-sm rounded btn-outline-primary"
-                      @click.prevent="() => addToCollect(product)"
-                    >
-                      <i class="bi bi-heart"></i>
-                      加入收藏
-                    </button>
-                    <button
-                      v-else
-                      type="button"
-                      class="btn btn-outline-primary"
-                      @click.prevent="() => removeCollect(product)"
-                    >
-                      <i class="bi bi-heart-fill text-danger"></i>
-                    </button>
+                    v-if="!isFav(product.id)"
+                    type="button"
+                    class="btn btn-sm rounded btn-outline-primary"
+                    @click.prevent="() => addToCollect(product)"
+                  >
+                    <i class="bi bi-heart"></i>
+                    加入收藏
+                  </button>
+                  <button
+                    v-else
+                    type="button"
+                    class="btn btn-outline-primary"
+                    @click.prevent="() => removeCollect(product)"
+                  >
+                    <i class="bi bi-heart-fill text-danger"></i>
+                  </button>
                 </div>
               </div>
             </div>
@@ -237,9 +259,9 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'swiper/vue';
-import 'swiper/css';
-import 'swiper/css/scrollbar';
+import { Swiper, SwiperSlide } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/scrollbar'
 import { mapActions, mapState } from 'pinia'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
@@ -300,7 +322,7 @@ export default {
           Swal.fire({
             icon: 'error',
             title: '請重試一次',
-            text: err.response.data.message,
+            text: err.response.data.message
           })
           this.isLoading = false
         })
@@ -308,14 +330,14 @@ export default {
     getProducts() {
       this.$http(`${VITE_URL}/v2/api/${VITE_PATH}/products?category=${this.category}`)
         .then((res) => {
-          const filterProducts = res.data.products.filter(item => item.id !== this.product.id)
+          const filterProducts = res.data.products.filter((item) => item.id !== this.product.id)
           this.products = filterProducts
         })
         .catch((err) => {
           Swal.fire({
             icon: 'error',
             title: '請重試一次',
-            text: err.response.data.message,
+            text: err.response.data.message
           })
         })
     }

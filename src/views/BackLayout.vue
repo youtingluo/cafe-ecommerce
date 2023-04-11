@@ -5,16 +5,16 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <router-link class="nav-link" to="/admin/products">產品列表</router-link>
+              <RouterLink class="nav-link" to="/admin/products">產品列表</RouterLink>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/admin/coupons">優惠券列表</router-link>
+              <RouterLink class="nav-link" to="/admin/coupons">優惠券列表</RouterLink>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/admin/orders">訂單列表</router-link>
+              <RouterLink class="nav-link" to="/admin/orders">訂單列表</RouterLink>
             </li>
             <li class="nav-item">
-              <router-link class="nav-link" to="/">回前台</router-link>
+              <RouterLink class="nav-link" to="/">回前台</RouterLink>
             </li>
           </ul>
           <button type="button" class="btn btn-light ms-auto" @click="() => logOut()">登出</button>

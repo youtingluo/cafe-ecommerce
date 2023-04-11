@@ -17,7 +17,7 @@
     </p>
   </div>
   <div class="container py-4 py-lg-7 min-body-heigh">
-    <ProcessBar></ProcessBar>
+    <ProcessBar />
     <div class="row">
       <div class="col-md-8 mx-auto">
         <VForm ref="form" class="my-3" v-slot="{ errors }" @submit="onSubmit">

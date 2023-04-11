@@ -62,7 +62,7 @@
       <Pagination
         :pagination="pagination"
         @emit-page="getCoupon"
-      ></Pagination>
+      />
     </div>
   </div>
   <DeleteModal ref="delModal" :product="tempCoupon" @remove-item="removeCoupon"/>

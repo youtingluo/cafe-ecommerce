@@ -140,6 +140,8 @@ export default {
           icon: 'success',
           title: '付款成功!',
           text: 'Cafe beat 感謝您的支持與喜愛！',
+        }).then(() => {
+          this.$router.replace('/done')
         })
       })
       .catch((err) => {

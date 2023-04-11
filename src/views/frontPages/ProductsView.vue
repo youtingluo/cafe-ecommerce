@@ -96,7 +96,7 @@
                     <button
                       v-if="!isFav(product.id)"
                       type="button"
-                      class="btn btn-outline-danger"
+                      class="btn btn-sm rounded btn-outline-primary"
                       @click.prevent="() => addToCollect(product)"
                     >
                       <i class="bi bi-heart"></i>
@@ -105,11 +105,10 @@
                     <button
                       v-else
                       type="button"
-                      class="btn btn-danger"
+                      class="btn btn-outline-primary"
                       @click.prevent="() => removeCollect(product)"
                     >
-                      <i class="bi bi-heart"></i>
-                      已收藏
+                      <i class="bi bi-heart-fill text-danger"></i>
                     </button>
                   </div>
                 </div>
@@ -157,7 +156,7 @@
                     <button
                       v-if="!isFav(product.id)"
                       type="button"
-                      class="btn btn-outline-danger"
+                      class="btn btn-sm rounded btn-outline-primary"
                       @click.prevent="() => addToCollect(product)"
                     >
                       <i class="bi bi-heart"></i>
@@ -166,11 +165,10 @@
                     <button
                       v-else
                       type="button"
-                      class="btn btn-danger"
+                      class="btn btn-outline-primary"
                       @click.prevent="() => removeCollect(product)"
                     >
-                      <i class="bi bi-heart"></i>
-                      已收藏
+                      <i class="bi bi-heart-fill text-danger"></i>
                     </button>
                   </div>
                 </div>

@@ -25,7 +25,7 @@
   </div>
 
   <div v-else class="container my-3 my-md-5 min-body-heigh">
-    <ProcessBar></ProcessBar>
+    <ProcessBar />
     <div class="row">
       <div class="col-md-8">
         <h1 class="bg-secondary p-3 text-center">購物車清單</h1>
@@ -91,7 +91,7 @@
             </VForm>
           </div>
           <div class="col-md-6">
-            <div class="d-flex justify-content-end">
+            <div class="d-flex justify-content-end mt-3 mt-md-0">
               <button
                 type="button"
                 class="btn btn-outline-danger"

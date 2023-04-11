@@ -22,7 +22,6 @@ configure({
 setLocale("zh_TW");
 
 const app = createApp(App)
-
 app.use(createPinia())
 app.use(router)
 app.use(VueAxios, axios)

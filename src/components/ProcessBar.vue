@@ -1,7 +1,7 @@
 <template>
   <div class="my-6">
     <h2 class="text-center mb-3">結帳流程</h2>
-    <div class="row text-center process-wrap">
+    <div class="row text-center process-wrap text-nowrap">
       <div class="col">
         <div class="process border border-primary p-2 pm rounded rounded-3 active">
           確認品項
@@ -54,6 +54,9 @@ export default {
       height: 3px;
       background: #676767;
     }
+    @media screen and (max-width: 768px ){
+      font-size: 14px;
+    } 
   }
   .process-wrap .col:last-child .process:after {
     content: '';

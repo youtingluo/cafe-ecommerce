@@ -39,6 +39,11 @@ const router = createRouter({
           component: () => import('../views/frontPages/ConfirmPay.vue'),
         },
         {
+          path: 'done',
+          name: 'done',
+          component: () => import('../views/frontPages/DoneView.vue'),
+        },
+        {
           path: 'products/:id',
           component: () => import('../views/frontPages/ProductView.vue')
         },

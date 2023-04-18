@@ -66,9 +66,9 @@
 
 <script>
 import { mapActions, mapState } from 'pinia'
-import { collectStore } from '../../stores/collect'
-import { cartStore } from '../../stores/cart'
-import mixin from '../../mixin/thousands_separators'
+import { collectStore } from '@/stores/collect'
+import { cartStore } from '@/stores/cart'
+import mixin from '@/mixin/thousands_separators'
 export default {
   mixins: [mixin],
   methods: {

@@ -73,10 +73,10 @@
 
 <script>
 import Swal from 'sweetalert2'
-import ProcessBar from '../../components/ProcessBar.vue'
+import ProcessBar from '@/components/ProcessBar.vue'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
-import mixin from '../../mixin/thousands_separators'
+import mixin from '@/mixin/thousands_separators'
 const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
   data() {

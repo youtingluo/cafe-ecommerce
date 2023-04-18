@@ -188,10 +188,10 @@
 import { mapActions, mapState } from 'pinia'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
-import Pagination from '../../components/PaginationComponent.vue'
-import { cartStore } from '../../stores/cart'
-import { collectStore } from '../../stores/collect'
-import mixin from '../../mixin/thousands_separators'
+import Pagination from '@/components/PaginationComponent.vue'
+import { cartStore } from '@/stores/cart'
+import { collectStore } from '@/stores/collect'
+import mixin from '@/mixin/thousands_separators'
 const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
   data() {

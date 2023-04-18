@@ -266,10 +266,10 @@ import { mapActions, mapState } from 'pinia'
 import Loading from 'vue-loading-overlay'
 import 'vue-loading-overlay/dist/css/index.css'
 import Swal from 'sweetalert2'
-import { cartStore } from '../../stores/cart'
+import { cartStore } from '@/stores/cart'
 import { register } from 'swiper/element/bundle'
-import { collectStore } from '../../stores/collect'
-import mixin from '../../mixin/thousands_separators'
+import { collectStore } from '@/stores/collect'
+import mixin from '@/mixin/thousands_separators'
 // register Swiper custom elements
 register()
 const { VITE_URL, VITE_PATH } = import.meta.env

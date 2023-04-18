@@ -5,7 +5,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <RouterLink class="nav-link" to="/admin/products">產品列表</RouterLink>
+              <RouterLink class="nav-link" to="/admin">產品列表</RouterLink>
             </li>
             <li class="nav-item">
               <RouterLink class="nav-link" to="/admin/coupons">優惠券列表</RouterLink>
@@ -48,7 +48,7 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.status = true
-            this.$router.push('/admin/products')
+            this.$router.push('/admin')
           }
         })
         .catch((err) => {
@@ -76,7 +76,7 @@ export default {
         })
     }
   },
-  mounted() {
+  created() {
     this.checkLogin()
   }
 }

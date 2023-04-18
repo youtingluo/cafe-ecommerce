@@ -62,7 +62,7 @@ const router = createRouter({
       component: () => import('../views/BackLayout.vue'),
       children: [
         {
-          path: 'products',
+          path: '',
           component: () => import('../views/backPages/AdminProductsView.vue')
         },
         {

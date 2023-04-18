@@ -95,7 +95,6 @@
                 rules="required"
               ></VField>
               <button type="submit" class="btn btn-success" :disabled="isLoading">
-                <span v-if="isLoading" class="spinner-border spinner-border-sm"></span>
                 套用優惠券
               </button>
               <ErrorMessage name="優惠券" class="invalid-feedback" />
@@ -148,10 +147,10 @@
 <script>
 import { mapActions, mapState } from 'pinia'
 import Loading from 'vue-loading-overlay'
-import ProcessBar from '../../components/ProcessBar.vue'
+import ProcessBar from '@/components/ProcessBar.vue'
 import 'vue-loading-overlay/dist/css/index.css'
-import { cartStore } from '../../stores/cart'
-import mixin from '../../mixin/thousands_separators'
+import { cartStore } from '@/stores/cart'
+import mixin from '@/mixin/thousands_separators'
 export default {
   data() {
     return {

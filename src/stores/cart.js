@@ -64,7 +64,7 @@ export const cartStore = defineStore('cart', {
         })
     },
     updateCart(cart, qty) {
-      this.isLoading = true
+      this.state = cart.product_id
       const data = {
         product_id: cart.product_id,
         qty
@@ -72,7 +72,7 @@ export const cartStore = defineStore('cart', {
       axios.put(`${VITE_URL}/v2/api/${VITE_PATH}/cart/${cart.id}`, { data })
         .then(() => {
           this.getCarts()
-          this.isLoading = false
+          this.state = ''
           Swal.fire({
             position: 'top',
             title: '已更新購物車',

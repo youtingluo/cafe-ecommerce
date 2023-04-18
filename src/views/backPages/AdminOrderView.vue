@@ -68,9 +68,9 @@
 <script>
 import Swal from 'sweetalert2'
 import Loading from 'vue-loading-overlay'
-import OrderModal from '../../components/OrderModal.vue'
-import DeleteModal from '../../components/DeleteModal.vue'
-import Pagination from '../../components/PaginationComponent.vue'
+import OrderModal from '@/components/OrderModal.vue'
+import DeleteModal from '@/components/DeleteModal.vue'
+import Pagination from '@/components/PaginationComponent.vue'
 import 'vue-loading-overlay/dist/css/index.css'
 const { VITE_URL, VITE_PATH } = import.meta.env
 export default {

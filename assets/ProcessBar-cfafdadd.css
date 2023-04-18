@@ -1,1 +1,0 @@
-.process{position:relative;background-color:#fff}.process.active{transform:scaleY(1.1);background:#676767;color:#fcf8f3}.process:after{content:"";position:absolute;display:block;top:50%;left:100%;width:50%;z-index:-1;height:3px;background:#676767}@media screen and (max-width: 768px){.process{font-size:14px}}.process-wrap .col:last-child .process:after{content:"";display:none}

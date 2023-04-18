@@ -2,7 +2,7 @@
   <div>
     <loading :active="isLoading" :loader="'dots'" :color="'#FCF8F3'" :background-color="'#676767'" />
     <div class="text-end mt-4">
-      <button class="btn btn-primary" @click="() => openCouponModal(true)">
+      <button type="button" class="btn btn-primary" @click="() => openCouponModal(true)">
         建立新的優惠券
       </button>
     </div>
@@ -71,6 +71,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 import Loading from 'vue-loading-overlay'
 import CouponModal from '../../components/CouponModal.vue'
 import DeleteModal from '../../components/DeleteModal.vue'
@@ -133,7 +134,11 @@ export default {
           this.getCoupon()
         })
         .catch((err) => {
-          alert(err.message)
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
         })
       this.bsModal.hideModal()
     },
@@ -148,7 +153,11 @@ export default {
           this.getCoupon()
         })
         .catch((err) => {
-          alert(err.response.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
         })
       this.bsModal.hideModal()
     }

@@ -74,6 +74,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 import Loading from 'vue-loading-overlay'
 import DeleteModal from '../../components/DeleteModal.vue'
 import ProductModal from '../../components/ProductModal.vue'
@@ -134,7 +135,11 @@ export default {
           this.getProducts()
         })
         .catch((err) => {
-          alert(err.message)
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
         })
       this.bsModal.hideModal()
     },
@@ -149,7 +154,11 @@ export default {
           this.getProducts()
         })
         .catch((err) => {
-          alert(err.message)
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
         })
       this.bsModal.hideModal()
     }

@@ -50,7 +50,7 @@
               >
                 -
               </button>
-              <input type="text" class="text-center" :value="cart.qty" readonly />
+              <input type="text" class="text-center qty-input" :value="cart.qty" readonly />
               <button
                 type="button"
                 class="btn btn-primary"
@@ -182,5 +182,8 @@ export default {
 }
 .selectQty {
   min-width: 200px;
+}
+.qty-input {
+  max-width: 120px;
 }
 </style>

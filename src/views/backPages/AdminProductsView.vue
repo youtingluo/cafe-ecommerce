@@ -1,8 +1,18 @@
 <template>
   <div>
-    <loading :active="isLoading" :loader="'dots'" :color="'#FCF8F3'" :background-color="'#676767'" />
+    <loading
+      :active="isLoading"
+      :loader="'dots'"
+      :color="'#FCF8F3'"
+      :background-color="'#676767'"
+    />
     <div class="text-end mt-4">
-      <button class="btn btn-primary" data-bs-target="#productModal" @click="() => openProductModal(true)">
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-bs-target="#productModal"
+        @click="() => openProductModal(true)"
+      >
         建立新的產品
       </button>
     </div>
@@ -27,11 +37,7 @@
             <span v-else>未啟用</span>
           </td>
           <td width="120">
-            <div
-              class="btn-group"
-              role="group"
-              aria-label="Basic mixed styles example"
-            >
+            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
               <button
                 type="button"
                 class="btn btn-secondary"
@@ -55,20 +61,12 @@
       目前有 <span>{{ products.length }}</span> 項產品
     </p>
     <div class="d-flex justify-content-center">
-      <Pagination
-        :pagination="pagination"
-        @emit-page="getProducts"
-      />
+      <Pagination :pagination="pagination" @emit-page="getProducts" />
     </div>
   </div>
 
   <!-- Product Modal -->
-    <ProductModal
-      :isNew="isNew"
-      :product="tempProduct"
-      @update="updateProduct"
-      ref="productModal"
-    />
+  <ProductModal :isNew="isNew" :product="tempProduct" @update="updateProduct" ref="productModal" />
   <!-- del Modal -->
   <DeleteModal :product="tempProduct" @remove-item="removeProduct" ref="delModal" />
 </template>
@@ -82,7 +80,7 @@ import Pagination from '@/components/PaginationComponent.vue'
 import 'vue-loading-overlay/dist/css/index.css'
 const { VITE_URL, VITE_PATH } = import.meta.env
 export default {
-  data () {
+  data() {
     return {
       isLoading: false,
       products: [],
@@ -99,10 +97,11 @@ export default {
     Pagination
   },
   methods: {
-    getProducts (page = 1) {
+    getProducts(page = 1) {
       this.isLoading = true
-      this.$http.get(`${VITE_URL}/v2/api/${VITE_PATH}/admin/products?page=${page}`)
-        .then(res => {
+      this.$http
+        .get(`${VITE_URL}/v2/api/${VITE_PATH}/admin/products?page=${page}`)
+        .then((res) => {
           this.products = res.data.products
           this.pagination = res.data.pagination
           this.isLoading = false
@@ -112,7 +111,7 @@ export default {
           this.$router.push('/login')
         })
     },
-    openProductModal (isNew, product) {
+    openProductModal(isNew, product) {
       if (isNew) {
         this.tempProduct = {}
         this.isNew = true
@@ -123,7 +122,7 @@ export default {
       this.bsModal = this.$refs.productModal
       this.bsModal.openModal()
     },
-    updateProduct () {
+    updateProduct() {
       let api = `${VITE_URL}/api/${VITE_PATH}/admin/product`
       let method = 'post'
       if (!this.isNew) {
@@ -138,18 +137,19 @@ export default {
           Swal.fire({
             icon: 'error',
             title: '請重試一次',
-            text: err.response.data.message,
+            text: err.response.data.message
           })
         })
       this.bsModal.hideModal()
     },
-    openRemoveModal (item) {
+    openRemoveModal(item) {
       this.tempProduct = { ...item }
       this.bsModal = this.$refs.delModal
       this.bsModal.openModal()
     },
-    removeProduct () {
-      this.$http.delete(`${VITE_URL}/api/${VITE_PATH}/admin/product/${this.tempProduct.id}`)
+    removeProduct() {
+      this.$http
+        .delete(`${VITE_URL}/api/${VITE_PATH}/admin/product/${this.tempProduct.id}`)
         .then(() => {
           this.getProducts()
         })
@@ -157,13 +157,13 @@ export default {
           Swal.fire({
             icon: 'error',
             title: '請重試一次',
-            text: err.response.data.message,
+            text: err.response.data.message
           })
         })
       this.bsModal.hideModal()
     }
   },
-  mounted () {
+  mounted() {
     this.getProducts()
   }
 }

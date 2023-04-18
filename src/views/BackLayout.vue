@@ -63,7 +63,7 @@ export default {
     logOut() {
       this.$http.post(`${VITE_URL}/v2/logout`)
         .then(() => {
-          this.$http.defaults.headers.common.Authorization = ''
+          document.cookie = `hexschoolToken=; expires=};`
           this.$router.push('/')
         })
         .catch((err) => {

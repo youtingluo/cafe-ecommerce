@@ -34,7 +34,7 @@
             <ErrorMessage name="密碼" class="invalid-feedback" />
             <label for="floatingPassword">密碼</label>
           </div>
-          <button class="btn btn-lg btn-primary w-100 mt-3" type="submit" :disabled="status">
+          <button type="submit" class="btn btn-lg btn-primary w-100 mt-3" :disabled="status">
             <span v-if="status" class="spinner-grow spinner-grow-sm me-2" role="status">
             </span>
             <span v-else>登入</span>
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 const { VITE_URL } = import.meta.env
 export default {
   data() {
@@ -66,11 +67,15 @@ export default {
           this.status = false
           const { token, expired } = res.data
           document.cookie = `hexschoolToken=${token}; expires=${new Date(expired)};`
-          this.$router.push('/admin/products')
+          this.$router.push('/admin')
         })
         .catch((err) => {
           this.status = false
-          alert(err.response.data.message)
+          Swal.fire({
+            icon: 'error',
+            title: '請重試一次',
+            text: err.response.data.message,
+          })
         })
     }
   }

@@ -56,7 +56,7 @@
         <template v-if="searchContent">
           <h3 class="mb-3">
             以下為您顯示 {{ searchContent }} 的結果
-            <button class="btn btn-outline-primary btn-sm mt-2" @click="() => getProducts()">
+            <button type="button" class="btn btn-outline-primary btn-sm mt-2" @click="() => getProducts()">
               <i class="bi bi-x-circle"></i> 取消搜尋
             </button>
           </h3>

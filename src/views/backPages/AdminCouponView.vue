@@ -15,7 +15,7 @@
           <th>code</th>
           <th>到期日</th>
           <th>是否啟用</th>
-          <th>編輯產品</th>
+          <th>編輯優惠券</th>
         </tr>
       </thead>
       <tbody>
@@ -112,7 +112,8 @@ export default {
     openCouponModal (isNew, coupon) {
       if (isNew) {
         this.tempCoupon = {
-          due_date: new Date().getTime() / 1000
+          due_date: new Date().getTime() / 1000,
+          is_enabled: 0
         }
         this.isNew = true
       } else {
@@ -128,6 +129,14 @@ export default {
       if (!this.isNew) {
         api = `${VITE_URL}/api/${VITE_PATH}/admin/coupon/${this.tempCoupon.id}`
         method = 'put'
+      }
+      if (this.tempCoupon.percent < 0 || this.tempCoupon.percent > 100) {
+        Swal.fire({
+          icon: 'error',
+          title: '請重試一次',
+          text: '請勿為負值或大於一百',
+        })
+        return
       }
       this.$http[method](api, { data: this.tempCoupon })
         .then(() => {

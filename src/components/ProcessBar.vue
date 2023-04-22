@@ -57,7 +57,7 @@ export default {
       background: #676767;
     }
     @media screen and (max-width: 768px){
-      font-size: 14px;
+      font-size: 12px;
       width: 70px;
       margin-right: 20px;
     }

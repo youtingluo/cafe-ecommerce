@@ -53,7 +53,7 @@
                 <div class="col-md-6">
                   <button
                     type="button"
-                    class="btn btn-primary w-100 mt-2"
+                    class="btn btn-primary w-100 mt-2 mb-2 mb-md-0"
                     :disabled="state === product.id"
                     @click="() => addToCart(product.id, qty)"
                   >
@@ -64,7 +64,7 @@
                     加入購物車
                   </button>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-4">
                   <button
                     v-if="!isFav(product.id)"
                     type="button"

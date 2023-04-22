@@ -10,7 +10,7 @@
       關於我們
     </p>
   </div>
-  <div class="container pt-0 pt-lg-7 about-section">
+  <div class="container pt-0 pt-lg-7 about-section overflow-hidden">
     <div class="row my-7 align-items-center">
       <div class="col-md-6 mb-7 mb-md-0">
         <div class="position-relative about-outline">
